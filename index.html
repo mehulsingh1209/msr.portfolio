@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mehul Singh | Full-Stack Developer</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #4b5563;
+      --light: #f3f4f6;
+      --dark: #1f2937;
+      --accent: #3b82f6;
+      --success: #10b981;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f9fafb;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 6rem 2rem 3rem;
+      text-align: center;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      margin-bottom: 2rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    nav {
+      background-color: rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+    
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    
+    nav .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: white;
+      text-decoration: none;
+    }
+    
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    nav .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    nav .nav-links a:hover {
+      color: var(--light);
+    }
+    
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      background-color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      overflow: hidden;
+    }
+    
+    .profile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-3px);
+    }
+    
+    section {
+      margin-bottom: 4rem;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    
+    .contact-info {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .skill-tag {
+      background-color: var(--accent);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .experience-item, .education-item, .internship-item, .project-item {
+      margin-bottom: 2rem;
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .experience-item:hover, .education-item:hover, .internship-item:hover, .project-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .position {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    
+    .date {
+      color: var(--secondary);
+      font-size: 0.9rem;
+      font-weight: normal;
+    }
+    
+    .company {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .project {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e5e7eb;
+    }
+    
+    .project h4 {
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .progress-container {
+      width: 100%;
+      background-color: #e5e7eb;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .progress-bar {
+      height: 10px;
+      border-radius: 10px;
+      background-color: var(--accent);
+    }
+    
+    .interest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    
+    .interest-item {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .interest-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .interest-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 4rem;
+    }
+    
+    .footer-text {
+      margin-bottom: 1rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+    
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .highlight {
+      color: var(--success);
+      font-weight: bold;
+    }
+    
+    .skill-category {
+      margin-bottom: 1.5rem;
+    }
+    
+    .skill-category h4 {
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    
+    .tech-used {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--secondary);
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.6rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">MSR</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#internships">Internships</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+  
+  <header>
+    <div class="container">
+      <div class="profile-img">
+        <img src="https://via.placeholder.com/150" alt="Mehul Singh">
+      </div>
+      <h1>Mehul Singh</h1>
+      <p class="headline">Full-Stack Developer & AI/ML Specialist</p>
+      <div class="contact-info">
+        <p>Birgunj, Parsa / Nepal | 9840239391 | mehulsingh1209@gmail.com</p>
+      </div>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/mehulsng/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:mehulsingh1209@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="tel:9840239391"><i class="fas fa-phone"></i></a>
+      </div>
+    </div>
+  </header>
+  
+  <main class="container">
+    <section id="about">
+      <h2><i class="fas fa-user-circle"></i> About Me</h2>
+      <p>Full-stack developer with expertise in building scalable web applications and machine learning solutions. 1+ years of experience in front-end development with React.js and proficiency in Python-based AI/ML implementations. Strong background in cloud platforms and agile development methodologies.</p>
+      
+      <div class="skill-tags">
+        <div class="skill-tag">Web Development</div>
+        <div class="skill-tag">React.js</div>
+        <div class="skill-tag">Python</div>
+        <div class="skill-tag">Machine Learning</div>
+        <div class="skill-tag">MongoDB</div>
+        <div class="skill-tag">Express.js</div>
+        <div class="skill-tag">Data Analysis</div>
+      </div>
+    </section>
+    
+    <section id="skills">
+      <h2><i class="fas fa-code"></i> Technical Skills</h2>
+      
+      <div class="experience-item">
+        <div class="skill-category">
+          <h4>Frontend Development</h4>
+          <div class="skill-tags">
+            <div class="skill-tag">JavaScript</div>
+            <div class="skill-tag">React.js</div>
+            <div class="skill-tag">HTML/CSS</div>
+            <div class="skill-tag">Responsive Design</div>
+          </div>
+          
+          <p>JavaScript & React.js</p>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 90%"></div>
+          </div>
+          
+          <p>HTML/CSS</p>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 95%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h4>Backend Development</h4>
+          <div class="skill-tags">
+            <div class="skill-tag">Express.js</div>
+            <div class="skill-tag">RESTful APIs</div>
+            <div class="skill-tag">Node.js</div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h4>Database & Data Management</h4>
+          <div class="skill-tags">
+            <div class="skill-tag">MongoDB</div>
+            <div class="skill-tag">SQL</div>
+            <div class="skill-tag">Database Optimization</div>
+          </div>
+          
+          <p>SQL & MongoDB</p>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 80%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h4>AI/ML & Data Science</h4>
+          <div class="skill-tags">
+            <div class="skill-tag">Python</div>
+            <div class="skill-tag">Machine Learning</div>
+            <div class="skill-tag">Deep Learning</div>
+            <div class="skill-tag">Data Analysis</div>
+            <div class="skill-tag">Tableau</div>
+          </div>
+          
+          <p>Python & Machine Learning</p>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 85%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h4>Other Technical Skills</h4>
+          <div class="skill-tags">
+            <div class="skill-tag">Data Structures</div>
+            <div class="skill-tag">Mobile App Development</div>
+            <div class="skill-tag">Android</div>
+            <div class="skill-tag">Google Maps API</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="experience-item">
+        <h3>Languages</h3>
+        <div class="skill-tags">
+          <div class="skill-tag">Maithili (Native)</div>
+          <div class="skill-tag">Hindi (Fluent)</div>
+          <div class="skill-tag">Nepali (Proficient)</div>
+          <div class="skill-tag">English (Proficient)</div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="experience">
+      <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+      
+      <div class="experience-item">
+        <div class="position">
+          <span>Data Analyst</span>
+          <span class="date">Nov 2024 – Feb 2025</span>
+        </div>
+        <div class="company">Shree Rang Pal Private Limited, Birgunj, Nepal</div>
+        <ul>
+          <li>Optimized Tableau data visualization dashboards, increasing stakeholder decision-making effectiveness by <span class="highlight">25%</span>.</li>
+          <li>Created predictive models using Python and SQL, increasing forecast accuracy by <span class="highlight">20%</span>.</li>
+          <li>Built automated data pipelines with Python and SQL, reducing manual data processing time by <span class="highlight">30%</span>.</li>
+        </ul>
+      </div>
+      
+      <div class="experience-item">
+        <div class="position">
+          <span>Web Developer, Deep Learning</span>
+          <span class="date">Nov 2023 – Oct 2024</span>
+        </div>
+        <div class="company">Parul University, Vadodara, Gujarat, India</div>
+        <p>Created high-performance web applications with improved responsiveness and quicker load times, enhancing user experience and engagement. Integrated frontend and backend for smooth operation and increased platform efficiency.</p>
+        <ul>
+          <li>Developed responsive user interfaces with React.js, improving user engagement</li>
+          <li>Implemented RESTful APIs with Express.js and MongoDB</li>
+          <li>Optimized database performance for scalable applications</li>
+          <li>Collaborated with cross-functional teams on multiple projects</li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="projects">
+      <h2><i class="fas fa-project-diagram"></i> Projects</h2>
+      
+      <div class="project-item">
+        <div class="position">
+          <span>Grocery Delivery Service</span>
+          <span class="date">2024</span>
+        </div>
+        <div class="tech-used">Technologies: React.js, Express.js, MongoDB, Node.js</div>
+        <ul>
+          <li>Developed intuitive and responsive user interface with React, increasing user engagement and session duration by <span class="highlight">25%</span>.</li>
+          <li>Designed and implemented RESTful APIs using Express.js and MongoDB, ensuring effective data processing and reducing response time by <span class="highlight">35%</span>.</li>
+          <li>Optimized database queries, reducing order processing time by <span class="highlight">50%</span> and improving scalability for heavy traffic.</li>
+          <li>Implemented user authentication and secure payment gateway integration.</li>
+        </ul>
+      </div>
+      
+      <div class="project-item">
+        <div class="position">
+          <span>Location Based Learning and Plants Detection System</span>
+          <span class="date">2023-2024</span>
+        </div>
+        <div class="tech-used">Technologies: Python, TensorFlow, CNN, Google Maps API</div>
+        <ul>
+          <li>Designed and trained a CNN (Convolutional Neural Network) deep learning model that detected plant diseases with <span class="highlight">92%</span> accuracy.</li>
+          <li>Implemented real-time tracking feature using Google Maps API, improving accessibility for learners in remote areas.</li>
+          <li>Created an intuitive mobile interface for capturing and analyzing plant images in real-time.</li>
+          <li>Developed comprehensive database of plant species and common diseases for accurate identification.</li>
+        </ul>
+      </div>
+      
+      <div class="project-item">
+        <div class="position">
+          <span>Landing Page for Ajay Infotech</span>
+          <span class="date">May 2024 – June 2024</span>
+        </div>
+        <div class="tech-used">Technologies: HTML, CSS, JavaScript</div>
+        <ul>
+          <li>Created a landing page using HTML, CSS, and JavaScript that increased user engagement by <span class="highlight">25%</span> through responsive and engaging design.</li>
+          <li>Deployed the project using GitHub Pages/Vercel, providing a clear and easy-to-use interface for users.</li>
+          <li>Implemented responsive design principles ensuring optimal viewing across all device sizes.</li>
+          <li>Optimized page loading speed through asset optimization and performance best practices.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="internships">
+      <h2><i class="fas fa-laptop-code"></i> Internships</h2>
+      
+      <div class="internship-item">
+        <div class="position">
+          <span>Machine Learning Intern</span>
+          <span class="date">Jan 2023 - Apr 2023</span> <!-- Added estimated dates -->
+        </div>
+        <div class="company">Codsoft Co., Kolkata, India</div>
+        <ul>
+          <li>Gained hands-on experience implementing machine learning algorithms and models</li>
+          <li>Collaborated with data scientists to develop and test ML solutions</li>
+          <li>Participated in data preprocessing, feature engineering, and model evaluation</li>
+          <li>Enhanced skills in Python-based ML libraries like scikit-learn, TensorFlow, and PyTorch</li>
+          <li>Contributed to the development of a sentiment analysis model for customer feedback analysis</li>
+          <li>Assisted in creating data visualizations for project presentations</li>
+        </ul>
+      </div>
+      
+      <div class="internship-item">
+        <div class="position">
+          <span>Frontend Developer Intern</span>
+          <span class="date">May 2024 – June 2024</span>
+        </div>
+        <div class="company">Ajay Infotech, Panipat, Haryana / Nepal</div>
+        <p>Developed responsive and captivating web experiences, emphasizing performance optimization and user-friendly design.</p>
+        <ul>
+          <li>Created a landing page using HTML, CSS, and JavaScript that increased user engagement by <span class="highlight">25%</span></li>
+          <li>Deployed the project using GitHub Pages/Vercel</li>
+          <li>Collaborated with the design team to implement UI mockups accurately</li>
+          <li>Gained experience in performance optimization and cross-browser compatibility</li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="education">
+      <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+      
+      <div class="education-item">
+        <div class="position">
+          <span>B.Tech Computer Science</span>
+          <span class="date">2021 - 2025</span>
+        </div>
+        <div class="company">Parul University, Vadodara, Gujarat, India</div>
+        <p>GPA: 7.67</p>
+        <p>Relevant Coursework: Data Structures & Algorithms, Database Management Systems, Machine Learning, Web Development, Computer Networks</p>
+      </div>
+      
+      <div class="education-item">
+        <div class="position">
+          <span>Physics, Chemistry, Mathematics</span>
+          <span class="date">2018 - 2020</span>
+        </div>
+        <div class="company">Kathmandu Bernhardt College, Kathmandu, Nepal</div>
+        <p>GPA: 6.5</p>
+      </div>
+
+      <div class="education-item">
+        <div class="position">
+          <span>School Education</span>
+          <span class="date">2008 - 2016</span>
+        </div>
+        <div class="company">Kadambari Academy, Birgunj, Nepal</div>
+        <p>Marks: <span class="highlight">80%</span> upon graduation</p>
+      </div>
+    </section>
+    
+    <section id="interests">
+      <h2><i class="fas fa-heart"></i> Interests</h2>
+      
+      <div class="interest-grid">
+        <div class="interest-item">
+          <div class="interest-icon"><i class="fas fa-book-open"></i></div>
+          <h3>Deep Diving into History</h3>
+        </div>
+        
+        <div class="interest-item">
+          <div class="interest-icon"><i class="fas fa-rocket"></i></div>
+          <h3>Space</h3>
+        </div>
+        
+        <div class="interest-item">
+          <div class="interest-icon"><i class="fas fa-lightbulb"></i></div>
+          <h3>Business Ideas</h3>
+        </div>
+      </div>
+    </section>
+    
+    <section id="contact">
+      <h2><i class="fas fa-envelope"></i> Get In Touch</h2>
+      
+      <div class="experience-item">
+        <p>I'm currently available for freelance work and full-time opportunities. Feel free to reach out if you're looking for a developer with my skill set!</p>
+        
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:mehulsingh1209@gmail.com">mehulsingh1209@gmail.com</a></li>
+          <li><strong>Phone:</strong> <a href="tel:9840239391">9840239391</a></li>
+          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mehulsng/" target="_blank">www.linkedin.com/in/mehulsng/</a></li>
+          <li><strong>Location:</strong> Birgunj, Parsa / Nepal</li>
+        </ul>
+        
+        <a href="mailto:mehulsingh1209@gmail.com" class="btn">Email Me</a>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p class="footer-text">© 2025 Mehul Singh - Full-Stack Developer & AI/ML Specialist</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/mehulsng/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:mehulsingh1209@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
