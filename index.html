@@ -26,12 +26,13 @@
       background-color: #f9fafb;
       color: var(--dark);
       line-height: 1.7;
+      text-align: justify;
     }
     
     header {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 6rem 2rem 3rem;
+      padding: 5rem 2rem 2.5rem;
       text-align: center;
       clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
       margin-bottom: 2rem;
@@ -57,7 +58,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
+      padding: 0.8rem 2rem;
     }
     
     nav .logo {
@@ -69,7 +70,7 @@
     
     nav .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
     }
     
     nav .nav-links a {
@@ -77,15 +78,19 @@
       text-decoration: none;
       transition: all 0.3s ease;
       font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
     }
     
     nav .nav-links a:hover {
       color: var(--light);
+      transform: translateY(-2px);
     }
     
     .profile-img {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       border: 4px solid white;
       margin-bottom: 1rem;
@@ -96,6 +101,7 @@
       justify-content: center;
       margin: 0 auto 1.5rem;
       overflow: hidden;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
     
     .profile-img img {
@@ -127,10 +133,11 @@
     .social-links a:hover {
       background-color: rgba(255, 255, 255, 0.4);
       transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     
     section {
-      margin-bottom: 4rem;
+      margin-bottom: 3.5rem;
     }
     
     h1 {
@@ -139,7 +146,7 @@
     }
     
     h2 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 1.5rem;
       color: var(--primary);
       display: flex;
@@ -148,7 +155,7 @@
     }
     
     h3 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin-bottom: 0.5rem;
       color: var(--dark);
     }
@@ -157,6 +164,10 @@
       margin-bottom: 1rem;
       font-size: 1.1rem;
       color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
     
     .skill-tags {
@@ -169,10 +180,13 @@
     .skill-tag {
       background-color: var(--accent);
       color: white;
-      padding: 0.4rem 1rem;
+      padding: 0.3rem 0.8rem;
       border-radius: 20px;
       font-size: 0.9rem;
       transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
     }
     
     .skill-tag:hover {
@@ -181,9 +195,9 @@
     }
     
     .experience-item, .education-item, .internship-item, .project-item {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       background-color: white;
-      padding: 1.5rem;
+      padding: 1.2rem;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       transition: all 0.3s ease;
@@ -206,11 +220,17 @@
       color: var(--secondary);
       font-size: 0.9rem;
       font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
     }
     
     .company {
       color: var(--primary);
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
     }
     
     .project {
@@ -230,6 +250,20 @@
       margin-bottom: 1rem;
     }
     
+    ul li {
+      margin-bottom: 0.3rem;
+      position: relative;
+    }
+    
+    ul li::before {
+      content: "\f0da";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      position: absolute;
+      left: -1.2rem;
+      color: var(--accent);
+    }
+    
     .progress-container {
       width: 100%;
       background-color: #e5e7eb;
@@ -238,20 +272,32 @@
     }
     
     .progress-bar {
-      height: 10px;
+      height: 8px;
       border-radius: 10px;
+      background-color: var(--accent);
+      position: relative;
+    }
+    
+    .progress-bar::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: -2px;
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
       background-color: var(--accent);
     }
     
     .interest-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 1rem;
     }
     
     .interest-item {
       background-color: white;
-      padding: 1.5rem;
+      padding: 1.2rem;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       display: flex;
@@ -264,36 +310,43 @@
     .interest-item:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      background-color: var(--light);
     }
     
     .interest-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
       color: var(--primary);
     }
     
     footer {
       background-color: var(--dark);
       color: white;
-      padding: 2rem 0;
+      padding: 1.5rem 0;
       text-align: center;
-      margin-top: 4rem;
+      margin-top: 3rem;
     }
     
     .footer-text {
       margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
     
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       background-color: var(--primary);
       color: white;
-      padding: 0.8rem 1.5rem;
+      padding: 0.7rem 1.2rem;
       border-radius: 5px;
       text-decoration: none;
       transition: all 0.3s ease;
       font-weight: 500;
       margin-top: 1rem;
+      gap: 0.5rem;
     }
     
     .btn:hover {
@@ -308,27 +361,80 @@
     }
     
     .skill-category {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
     
     .skill-category h4 {
       margin-bottom: 0.5rem;
       color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
     }
     
     .tech-used {
       margin-top: 0.5rem;
       font-size: 0.9rem;
       color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    
+    .headline {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+      gap: 0.3rem;
+    }
+    
+    .scroll-up {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+    
+    .scroll-up.visible {
+      opacity: 1;
+    }
+    
+    .scroll-up:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
     }
     
     @media (max-width: 768px) {
       h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       
       h2 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
       }
       
       .nav-links {
@@ -347,13 +453,12 @@
     <div class="container">
       <a href="#" class="logo">MSR</a>
       <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#internships">Internships</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
+        <a href="#about"><i class="fas fa-user"></i> About</a>
+        <a href="#skills"><i class="fas fa-code"></i> Skills</a>
+        <a href="#experience"><i class="fas fa-briefcase"></i> Experience</a>
+        <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
       </div>
     </div>
   </nav>
@@ -364,311 +469,230 @@
         <img src="143124065.jpeg" alt="Mehul Singh">
       </div>
       <h1>Mehul Singh</h1>
-      <p class="headline">Full-Stack Developer & AI/ML Specialist</p>
+      <p class="headline"><i class="fas fa-laptop-code"></i> Full-Stack Developer & AI/ML Specialist</p>
       <div class="contact-info">
-        <p>Birgunj, Parsa / Nepal | 9840239391 | mehulsingh1209@gmail.com</p>
+        <i class="fas fa-map-marker-alt"></i> Birgunj, Nepal | <i class="fas fa-phone"></i> 9840239391 | <i class="fas fa-envelope"></i> mehulsingh1209@gmail.com
       </div>
       <div class="social-links">
-        <a href="https://www.linkedin.com/in/mehulsng/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="mailto:mehulsingh1209@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="tel:9840239391"><i class="fas fa-phone"></i></a>
-      </div>
+  <a href="https://www.linkedin.com/in/mehulsng/" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="https://github.com/mehulsng" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="https://leetcode.com/u/mehulsng/" target="_blank"><i class="fas fa-code"></i></a>
+</div>
+      <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> Hire Me</a>
     </div>
   </header>
-  
+
   <main class="container">
     <section id="about">
-      <h2><i class="fas fa-user-circle"></i> About Me</h2>
+      <h2><i class="fas fa-user"></i> About Me</h2>
       <p>Full-stack developer with expertise in building scalable web applications and machine learning solutions. 1+ years of experience in front-end development with React.js and proficiency in Python-based AI/ML implementations. Strong background in cloud platforms and agile development methodologies.</p>
-      
-      <div class="skill-tags">
-        <div class="skill-tag">Web Development</div>
-        <div class="skill-tag">React.js</div>
-        <div class="skill-tag">Python</div>
-        <div class="skill-tag">Machine Learning</div>
-        <div class="skill-tag">MongoDB</div>
-        <div class="skill-tag">Express.js</div>
-        <div class="skill-tag">Data Analysis</div>
-      </div>
     </section>
-    
+
     <section id="skills">
       <h2><i class="fas fa-code"></i> Technical Skills</h2>
-      
-      <div class="experience-item">
-        <div class="skill-category">
-          <h4>Frontend Development</h4>
-          <div class="skill-tags">
-            <div class="skill-tag">JavaScript</div>
-            <div class="skill-tag">React.js</div>
-            <div class="skill-tag">HTML/CSS</div>
-            <div class="skill-tag">Responsive Design</div>
-          </div>
-          
-          <p>JavaScript & React.js</p>
-          <div class="progress-container">
-            <div class="progress-bar" style="width: 90%"></div>
-          </div>
-          
-          <p>HTML/CSS</p>
-          <div class="progress-container">
-            <div class="progress-bar" style="width: 95%"></div>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <h4>Backend Development</h4>
-          <div class="skill-tags">
-            <div class="skill-tag">Express.js</div>
-            <div class="skill-tag">RESTful APIs</div>
-            <div class="skill-tag">Node.js</div>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <h4>Database & Data Management</h4>
-          <div class="skill-tags">
-            <div class="skill-tag">MongoDB</div>
-            <div class="skill-tag">SQL</div>
-            <div class="skill-tag">Database Optimization</div>
-          </div>
-          
-          <p>SQL & MongoDB</p>
-          <div class="progress-container">
-            <div class="progress-bar" style="width: 80%"></div>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <h4>AI/ML & Data Science</h4>
-          <div class="skill-tags">
-            <div class="skill-tag">Python</div>
-            <div class="skill-tag">Machine Learning</div>
-            <div class="skill-tag">Deep Learning</div>
-            <div class="skill-tag">Data Analysis</div>
-            <div class="skill-tag">Tableau</div>
-          </div>
-          
-          <p>Python & Machine Learning</p>
-          <div class="progress-container">
-            <div class="progress-bar" style="width: 85%"></div>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <h4>Other Technical Skills</h4>
-          <div class="skill-tags">
-            <div class="skill-tag">Data Structures</div>
-            <div class="skill-tag">Mobile App Development</div>
-            <div class="skill-tag">Android</div>
-            <div class="skill-tag">Google Maps API</div>
-          </div>
+      <div class="skill-category">
+        <h4><i class="fas fa-layer-group"></i> Core Skills</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Data Structures</span>
+          <span class="skill-tag">Web Development</span>
+          <span class="skill-tag">Mobile App Development</span>
+          <span class="skill-tag">Android</span>
         </div>
       </div>
-      
-      <div class="experience-item">
-        <h3>Languages</h3>
+      <div class="skill-category">
+        <h4><i class="fas fa-layer-group"></i> Frontend</h4>
         <div class="skill-tags">
-          <div class="skill-tag">Maithili (Native)</div>
-          <div class="skill-tag">Hindi (Fluent)</div>
-          <div class="skill-tag">Nepali (Proficient)</div>
-          <div class="skill-tag">English (Proficient)</div>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h4><i class="fas fa-server"></i> Backend</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Express</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">RESTful APIs</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h4><i class="fas fa-brain"></i> AI/ML</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">CNNs</span>
+          <span class="skill-tag">Deep Learning</span>
         </div>
       </div>
     </section>
-    
+
     <section id="experience">
       <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+      <div class="experience-item">
+        <div class="position">
+          <span>Web Developer, Deep Learning</span>
+          <span class="date"><i class="fas fa-calendar-alt"></i> Nov 2023 - Oct 2024</span>
+        </div>
+        <div class="company"><i class="fas fa-building"></i> Parul University, Vadodara, Gujarat, India</div>
+        <p>Created high-performance web applications with improved responsiveness and quicker load times, enhancing user experience and engagement. Integrated frontend and backend for smooth operation and increased platform efficiency.</p>
+        <div class="project">
+          <h4>Grocery Delivery Service</h4>
+          <ul>
+            <li>Used React to create an intuitive and responsive user interface that increased user engagement and session duration by 25%</li>
+            <li>Designed and implemented RESTful APIs using Express.js and MongoDB that ensured effective data processing and a 35% reduction in response time</li>
+            <li>Optimized database queries reducing order processing time by 50%, improving scalability for heavy traffic</li>
+          </ul>
+        </div>
+        <div class="project">
+          <h4>Location Based Learning and Plants Detection Learning</h4>
+          <ul>
+            <li>Used CNNs (Convolutional Neural Networks) to design and train a deep learning model that detected plant diseases with 92% accuracy</li>
+            <li>Implemented a real-time tracking feature using Google Maps API, improving accessibility for learners in remote areas</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="experience-item">
+        <div class="position">
+          <span>Frontend Developer</span>
+          <span class="date"><i class="fas fa-calendar-alt"></i> May 2024 - June 2024</span>
+        </div>
+        <div class="company"><i class="fas fa-building"></i> Ajay Infotech</div>
+        <ul>
+          <li>Created a landing page using HTML, CSS, and JavaScript that increased user engagement by 25% thanks to its responsive and engaging design</li>
+          <li>Deployed the project using GitHub Pages/Vercel, providing a clear and easy-to-use interface for users</li>
+        </ul>
+      </div>
       
       <div class="experience-item">
         <div class="position">
           <span>Data Analyst</span>
-          <span class="date">Nov 2024 – Feb 2025</span>
+          <span class="date"><i class="fas fa-calendar-alt"></i> Nov 2024 - Feb 2025</span>
         </div>
-        <div class="company">Shree Rang Pal Private Limited, Birgunj, Nepal</div>
+        <div class="company"><i class="fas fa-building"></i> Shree Rang Pal Private Limited, Birgunj, Parsa, Nepal</div>
         <ul>
-          <li>Optimized Tableau data visualization dashboards, increasing stakeholder decision-making effectiveness by <span class="highlight">25%</span>.</li>
-          <li>Created predictive models using Python and SQL, increasing forecast accuracy by <span class="highlight">20%</span>.</li>
-          <li>Built automated data pipelines with Python and SQL, reducing manual data processing time by <span class="highlight">30%</span>.</li>
-        </ul>
-      </div>
-      
-      <div class="experience-item">
-        <div class="position">
-          <span>Web Developer, Deep Learning</span>
-          <span class="date">Nov 2023 – Oct 2024</span>
-        </div>
-        <div class="company">Parul University, Vadodara, Gujarat, India</div>
-        <p>Created high-performance web applications with improved responsiveness and quicker load times, enhancing user experience and engagement. Integrated frontend and backend for smooth operation and increased platform efficiency.</p>
-        <ul>
-          <li>Developed responsive user interfaces with React.js, improving user engagement</li>
-          <li>Implemented RESTful APIs with Express.js and MongoDB</li>
-          <li>Optimized database performance for scalable applications</li>
-          <li>Collaborated with cross-functional teams on multiple projects</li>
-        </ul>
-      </div>
-    </section>
-    
-    <section id="projects">
-      <h2><i class="fas fa-project-diagram"></i> Projects</h2>
-      
-      <div class="project-item">
-        <div class="position">
-          <span>Grocery Delivery Service</span>
-          <span class="date">2024</span>
-        </div>
-        <div class="tech-used">Technologies: React.js, Express.js, MongoDB, Node.js</div>
-        <ul>
-          <li>Developed intuitive and responsive user interface with React, increasing user engagement and session duration by <span class="highlight">25%</span>.</li>
-          <li>Designed and implemented RESTful APIs using Express.js and MongoDB, ensuring effective data processing and reducing response time by <span class="highlight">35%</span>.</li>
-          <li>Optimized database queries, reducing order processing time by <span class="highlight">50%</span> and improving scalability for heavy traffic.</li>
-          <li>Implemented user authentication and secure payment gateway integration.</li>
-        </ul>
-      </div>
-      
-      <div class="project-item">
-        <div class="position">
-          <span>Location Based Learning and Plants Detection System</span>
-          <span class="date">2023-2024</span>
-        </div>
-        <div class="tech-used">Technologies: Python, TensorFlow, CNN, Google Maps API</div>
-        <ul>
-          <li>Designed and trained a CNN (Convolutional Neural Network) deep learning model that detected plant diseases with <span class="highlight">92%</span> accuracy.</li>
-          <li>Implemented real-time tracking feature using Google Maps API, improving accessibility for learners in remote areas.</li>
-          <li>Created an intuitive mobile interface for capturing and analyzing plant images in real-time.</li>
-          <li>Developed comprehensive database of plant species and common diseases for accurate identification.</li>
-        </ul>
-      </div>
-      
-      <div class="project-item">
-        <div class="position">
-          <span>Landing Page for Ajay Infotech</span>
-          <span class="date">May 2024 – June 2024</span>
-        </div>
-        <div class="tech-used">Technologies: HTML, CSS, JavaScript</div>
-        <ul>
-          <li>Created a landing page using HTML, CSS, and JavaScript that increased user engagement by <span class="highlight">25%</span> through responsive and engaging design.</li>
-          <li>Deployed the project using GitHub Pages/Vercel, providing a clear and easy-to-use interface for users.</li>
-          <li>Implemented responsive design principles ensuring optimal viewing across all device sizes.</li>
-          <li>Optimized page loading speed through asset optimization and performance best practices.</li>
+          <li>Optimized Tableau data visualization dashboards, increasing stakeholder decision-making effectiveness by 25%</li>
+          <li>Created predictive models using Python and SQL, increasing forecast accuracy by 20%</li>
+          <li>Built automated data pipelines with Python and SQL, reducing manual data processing time by 30%</li>
         </ul>
       </div>
     </section>
 
-    <section id="internships">
-      <h2><i class="fas fa-laptop-code"></i> Internships</h2>
-      
-      <div class="internship-item">
-        <div class="position">
-          <span>Machine Learning Intern</span>
-          <span class="date">Jan 2023 - Apr 2023</span> <!-- Added estimated dates -->
-        </div>
-        <div class="company">Codsoft Co., Kolkata, India</div>
-        <ul>
-          <li>Gained hands-on experience implementing machine learning algorithms and models</li>
-          <li>Collaborated with data scientists to develop and test ML solutions</li>
-          <li>Participated in data preprocessing, feature engineering, and model evaluation</li>
-          <li>Enhanced skills in Python-based ML libraries like scikit-learn, TensorFlow, and PyTorch</li>
-          <li>Contributed to the development of a sentiment analysis model for customer feedback analysis</li>
-          <li>Assisted in creating data visualizations for project presentations</li>
-        </ul>
+    <section id="projects">
+      <h2><i class="fas fa-project-diagram"></i> Key Projects</h2>
+      <div class="project-item">
+        <h3>Grocery Delivery Service</h3>
+        <div class="tech-used"><i class="fas fa-tools"></i> React, Express.js, MongoDB</div>
+        <p>Developed a comprehensive web application for grocery delivery with responsive UI and efficient backend processing.</p>
       </div>
       
-      <div class="internship-item">
-        <div class="position">
-          <span>Frontend Developer Intern</span>
-          <span class="date">May 2024 – June 2024</span>
-        </div>
-        <div class="company">Ajay Infotech, Panipat, Haryana / India</div>
-        <p>Developed responsive and captivating web experiences, emphasizing performance optimization and user-friendly design.</p>
-        <ul>
-          <li>Created a landing page using HTML, CSS, and JavaScript that increased user engagement by <span class="highlight">25%</span></li>
-          <li>Deployed the project using GitHub Pages/Vercel</li>
-          <li>Collaborated with the design team to implement UI mockups accurately</li>
-          <li>Gained experience in performance optimization and cross-browser compatibility</li>
-        </ul>
+      <div class="project-item">
+        <h3>Plant Disease Detection System</h3>
+        <div class="tech-used"><i class="fas fa-tools"></i> Python, CNN, TensorFlow</div>
+        <p>Machine learning platform for plant disease detection achieving 92% accuracy using convolutional neural networks.</p>
       </div>
     </section>
-    
+
     <section id="education">
       <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-      
       <div class="education-item">
         <div class="position">
-          <span>B.Tech Computer Science</span>
-          <span class="date">2021 - 2025</span>
+          B.Tech Computer Science
+          <span class="date"><i class="fas fa-calendar-alt"></i> 2021 - 2025</span>
         </div>
-        <div class="company">Parul University, Vadodara, Gujarat, India</div>
-        <p>GPA: 7.67</p>
-        <p>Relevant Coursework: Data Structures & Algorithms, Database Management Systems, Machine Learning, Web Development, Computer Networks</p>
+        <div class="company"><i class="fas fa-university"></i> Parul University</div>
+        <p>GPA: 7.67/10.0</p>
       </div>
       
       <div class="education-item">
         <div class="position">
-          <span>Physics, Chemistry, Mathematics</span>
-          <span class="date">2018 - 2020</span>
+          Physics, Chemistry, Mathematics
+          <span class="date"><i class="fas fa-calendar-alt"></i> 2018 - 2020</span>
         </div>
-        <div class="company">Kathmandu Bernhardt College, Kathmandu, Nepal</div>
-        <p>GPA: 6.5</p>
-      </div>
-
-      <div class="education-item">
-        <div class="position">
-          <span>School Education</span>
-          <span class="date">2008 - 2016</span>
-        </div>
-        <div class="company">Kadambari Academy, Birgunj, Nepal</div>
-        <p>Marks: <span class="highlight">80%</span> upon graduation</p>
+        <div class="company"><i class="fas fa-university"></i> Kathmandu Bernhardt College</div>
+        <p>GPA: 6.5/10.0</p>
       </div>
     </section>
     
     <section id="interests">
       <h2><i class="fas fa-heart"></i> Interests</h2>
-      
       <div class="interest-grid">
         <div class="interest-item">
           <div class="interest-icon"><i class="fas fa-book-open"></i></div>
-          <h3>Deep Diving into History</h3>
+          <h4>Deep Diving into History</h4>
         </div>
-        
         <div class="interest-item">
           <div class="interest-icon"><i class="fas fa-rocket"></i></div>
-          <h3>Space</h3>
+          <h4>Space</h4>
         </div>
-        
         <div class="interest-item">
           <div class="interest-icon"><i class="fas fa-lightbulb"></i></div>
-          <h3>Business Ideas</h3>
+          <h4>Business Ideas</h4>
         </div>
       </div>
     </section>
     
-    <section id="contact">
-      <h2><i class="fas fa-envelope"></i> Get In Touch</h2>
-      
-      <div class="experience-item">
-        <p>I'm currently available for freelance work and full-time opportunities. Feel free to reach out if you're looking for a developer with my skill set!</p>
-        
-        <ul>
-          <li><strong>Email:</strong> <a href="mailto:mehulsingh1209@gmail.com">mehulsingh1209@gmail.com</a></li>
-          <li><strong>Phone:</strong> <a href="tel:9840239391">9840239391</a></li>
-          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mehulsng/" target="_blank">www.linkedin.com/in/mehulsng/</a></li>
-          <li><strong>Location:</strong> Birgunj, Parsa / Nepal</li>
-        </ul>
-        
-        <a href="mailto:mehulsingh1209@gmail.com" class="btn">Email Me</a>
+    <section id="languages">
+      <h2><i class="fas fa-language"></i> Languages</h2>
+      <div class="skill-tags">
+        <span class="skill-tag">Maithili (Native)</span>
+        <span class="skill-tag">Hindi (Fluent)</span>
+        <span class="skill-tag">Nepali (Proficient)</span>
+        <span class="skill-tag">English (Proficient)</span>
       </div>
     </section>
+
+    <section id="contact">
+      <h2><i class="fas fa-envelope"></i> Get in Touch</h2>
+      <form class="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder="Your Name" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Your Email" class="form-control">
+        </div>
+        <div class="form-group">
+          <textarea rows="5" placeholder="Your Message" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+    </section>
   </main>
-  
+
   <footer>
     <div class="container">
-      <p class="footer-text">© 2025 Mehul Singh - Full-Stack Developer & AI/ML Specialist</p>
       <div class="social-links">
-        <a href="https://www.linkedin.com/in/mehulsng/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="mailto:mehulsingh1209@gmail.com"><i class="fas fa-envelope"></i></a>
-      </div>
+  <a href="https://www.linkedin.com/in/mehulsng/" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="https://github.com/mehulsng" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="https://leetcode.com/u/mehulsng/" target="_blank"><i class="fas fa-code"></i></a>
+</div>
+      <p class="footer-text">&copy; 2025 Mehul Singh. All rights reserved.</p>
     </div>
   </footer>
+
+  <a href="#" class="scroll-up"><i class="fas fa-arrow-up"></i></a>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Scroll to top button visibility
+    window.addEventListener('scroll', () => {
+      const scrollUp = document.querySelector('.scroll-up');
+      if (window.scrollY > 300) {
+        scrollUp.classList.add('visible');
+      } else {
+        scrollUp.classList.remove('visible');
+      }
+    });
+  </script>
 </body>
 </html>
