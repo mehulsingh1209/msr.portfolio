@@ -585,10 +585,27 @@
         font-size: 1.3rem;
       }
       
-      .contact-info {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
+      .contact-info span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 0 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.contact-info span:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.contact-info i {
+  font-size: 1.2rem;
+}
       
       .interest-grid {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -988,7 +1005,7 @@
       <i class="far fa-copyright"></i> 2025 Mehul Singh. All Rights Reserved.
     </div>
     <div class="social-links">
-      <a href="https://github.com/mehulsng" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://github.com/mehulsingh1209" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
       <a href="https://www.linkedin.com/in/mehulsng/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
       <a href="https://leetcode.com/u/mehulsng/" target="_blank" aria-label="LeetCode"><i class="fas fa-code"></i></a>
     </div>
