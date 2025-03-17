@@ -260,7 +260,7 @@
     .contact-info {
   display: flex;
   align-items: center;
-  gap: 25px; /* Increased gap between icons */
+  gap: 15px; /* Smaller gap between icons to match the reference */
   margin: 15px 0;
 }
 
@@ -268,21 +268,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
+.contact-item a:hover {
+  background-color: #ff014f; /* Pink accent color from the reference site */
+  transform: translateY(-3px);
+}
+
 .contact-item i {
-  font-size: 18px;
-  color: #333;
+  font-size: 16px;
+  color: #8e8e8e; /* Gray color for the icons */
   transition: color 0.3s ease;
 }
-    }
 
-    
+.contact-item a:hover i {
+  color: white;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .contact-info {
+    justify-content: center;
+  }
+}
     .skill-tags {
       display: flex;
       flex-wrap: wrap;
