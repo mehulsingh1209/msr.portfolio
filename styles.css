@@ -126,8 +126,6 @@ nav .container {
   color: white;
   font-size: 1.5rem;
   cursor: pointer;
-  transition: var(--transition);
-  outline: none;
 }
 
 /* Header section */
@@ -470,61 +468,37 @@ footer .social-links a {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  /* Improved Mobile Navigation */
-  .mobile-menu-btn {
-    display: block;
-    z-index: 1001;
-  }
-  
   .nav-links {
     position: fixed;
-    top: 60px; /* Should match your navbar height */
+    top: 60px;
     left: 0;
     right: 0;
-    width: 100%;
     background-color: var(--dark-color);
     flex-direction: column;
-    padding: 0;
+    padding: 1rem;
     gap: 0;
-    height: auto;
-    max-height: calc(100vh - 60px);
-    overflow-y: auto;
-    
-    /* Fixed position setup */
     transform: translateY(-150%);
-    opacity: 0;
-    visibility: hidden;
-    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
   
   .nav-links.active {
     transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
   }
   
   .nav-links a {
-    width: 100%;
-    padding: 1rem 1.5rem;
+    padding: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    justify-content: flex-start;
-    opacity: 1;
   }
   
   .nav-links a:last-child {
     border-bottom: none;
   }
   
-  /* Safari mobile fix */
-  .nav-links.active {
-    -webkit-transform: translateY(0);
-    -webkit-backface-visibility: hidden;
-    -webkit-perspective: 1000;
+  .mobile-menu-btn {
+    display: block;
   }
   
-  /* Other mobile styles */
   header h1 {
     font-size: 2rem;
   }
@@ -541,21 +515,6 @@ footer .social-links a {
   
   .interest-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  
-  /* Add custom mobile touch area for better tapping */
-  .nav-links a {
-    position: relative;
-  }
-  
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
   }
 }
 
@@ -601,59 +560,5 @@ footer .social-links a {
     height: 40px;
     bottom: 20px;
     right: 20px;
-  }
-  
-  /* Improved small screen nav menu */
-  nav .container {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-  }
-  
-  .mobile-menu-btn {
-    font-size: 1.3rem;
-  }
-  
-  .nav-links a {
-    padding: 0.85rem 1.25rem;
-  }
-}
-
-/* Touch device optimization */
-@media (hover: none) {
-  .btn:hover, 
-  .skill-tag:hover,
-  .nav-links a:hover,
-  .interest-item:hover,
-  .social-links a:hover,
-  .contact-item a:hover,
-  .scroll-to-top:hover {
-    transform: none;
-    box-shadow: var(--shadow);
-  }
-  
-  /* Active states for touch */
-  .btn:active, 
-  .skill-tag:active,
-  .social-links a:active,
-  .contact-item a:active {
-    transform: scale(0.98);
-  }
-}
-
-/* Specific iOS fixes */
-@supports (-webkit-touch-callout: none) {
-  /* iOS-specific fixes */
-  .nav-links {
-    /* Prevents bottom bar issues on iOS */
-    padding-bottom: env(safe-area-inset-bottom, 20px);
-  }
-  
-  /* Prevent iOS double-tap delay */
-  a, button {
-    touch-action: manipulation;
   }
 }
