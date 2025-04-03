@@ -10,28 +10,28 @@
   <title>MSR</title>
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Navigation -->
-  <nav>
- <nav class="navbar">
-  <div class="container">
-    <a href="#" class="logo">Your Logo</a>
-    <button class="mobile-menu-btn">
-      <i class="fa fa-bars"></i>
-    </button>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">MSR</a>
+      <button class="mobile-menu-btn">
+        <i class="fa fa-bars"></i>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <!-- Header -->
-  <header>
+  <header id="home">
     <div class="container">
       <div class="profile-img">
         <img src="2025.jpg" alt="Mehul Singh" loading="lazy">
@@ -281,27 +281,24 @@
     </section>
 
     <!-- Contact Section -->
-    <!-- Contact Section -->
-<section id="contact">
-  <h2><i class="fas fa-envelope"></i> Get in Touch</h2>
-  <form id="contact-form" action="action="<form
-  action="mehulsingh1209@gmail.com"
-  method="POST"" method="POST">
-    <!-- Hidden fields for FormSubmit configuration -->
-    <input type="hidden" name="_next" value="https://msr-portfolio.vercel.app/">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
-    
-    <!-- Form fields -->
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" required></textarea>
-    
-    <button type="submit" class="btn">
-      <i class="fas fa-paper-plane"></i> Send Message
-    </button>
-  </form>
-</section>
+    <section id="contact">
+      <h2><i class="fas fa-envelope"></i> Get in Touch</h2>
+      <form id="contact-form" action="https://formsubmit.co/mehulsingh1209@gmail.com" method="POST">
+        <!-- Hidden fields for FormSubmit configuration -->
+        <input type="hidden" name="_next" value="https://msr-portfolio.vercel.app/">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
+        
+        <!-- Form fields -->
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        
+        <button type="submit" class="btn">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+    </section>
   </main>
 
   <!-- Footer -->
