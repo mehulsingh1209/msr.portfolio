@@ -1,141 +1,118 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // DOM Elements
+  // Get existing elements
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
-  const scrollToTopBtn = document.querySelector('.scroll-to-top');
-  const contactForm = document.getElementById('contact-form');
   
-  // Mobile menu toggle
-  mobileMenuBtn.addEventListener('click', function() {
-    navLinks.classList.toggle('active');
-    // Toggle icon between bars and times
-    const icon = this.querySelector('i');
-    if (icon.classList.contains('fa-bars')) {
-      icon.classList.remove('fa-bars');
-      icon.classList.add('fa-times');
-    } else {
-      icon.classList.remove('fa-times');
-      icon.classList.add('fa-bars');
-    }
+  // Add dropdown functionality for mobile submenus if needed
+  const dropdownLinks = document.querySelectorAll('.nav-links .has-dropdown');
+  
+  // Handle dropdowns on mobile
+  dropdownLinks.forEach(link => {
+    // Create dropdown toggle button
+    const dropdownToggle = document.createElement('span');
+    dropdownToggle.className = 'dropdown-toggle';
+    dropdownToggle.innerHTML = '<i class="fas fa-chevron-down"></i>';
+    link.appendChild(dropdownToggle);
+    
+    // Toggle dropdown on click
+    dropdownToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Toggle active class on parent
+      link.classList.toggle('dropdown-active');
+      
+      // Find the dropdown menu
+      const dropdown = link.querySelector('.dropdown-menu');
+      
+      // Toggle height for smooth animation
+      if (link.classList.contains('dropdown-active')) {
+        dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
+      } else {
+        dropdown.style.maxHeight = '0';
+      }
+    });
   });
   
-  // Close mobile menu when a link is clicked
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', function() {
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (navLinks.classList.contains('active') && 
+        !navLinks.contains(e.target) && 
+        e.target !== mobileMenuBtn && 
+        !mobileMenuBtn.contains(e.target)) {
       navLinks.classList.remove('active');
+      
       // Reset icon
       const icon = mobileMenuBtn.querySelector('i');
-      icon.classList.remove('fa-times');
-      icon.classList.add('fa-bars');
-    });
-  });
-  
-  // Scroll to top button visibility
-  window.addEventListener('scroll', function() {
-    if (window.pageYOffset > 300) {
-      scrollToTopBtn.classList.add('visible');
-    } else {
-      scrollToTopBtn.classList.remove('visible');
+      if (icon) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
     }
   });
   
-  // Scroll to top functionality
-  scrollToTopBtn.addEventListener('click', function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-  
-  // Smooth scroll for navigation links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
+  // Handle window resize
+  let windowWidth = window.innerWidth;
+  window.addEventListener('resize', function() {
+    // Check if width changed significantly to avoid resize events when scrolling on mobile
+    if (Math.abs(windowWidth - window.innerWidth) > 50) {
+      windowWidth = window.innerWidth;
       
-      const targetId = this.getAttribute('href');
-      
-      if (targetId === '#') return;
-      
-      const targetElement = document.querySelector(targetId);
-      
-      if (targetElement) {
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+      // If window is resized larger than mobile breakpoint, reset mobile menu
+      if (window.innerWidth > 768) { // Adjust this value to match your CSS breakpoint
+        navLinks.classList.remove('active');
+        
+        // Reset icon
+        const icon = mobileMenuBtn.querySelector('i');
+        if (icon) {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+        
+        // Reset any open dropdowns
+        document.querySelectorAll('.dropdown-active').forEach(item => {
+          item.classList.remove('dropdown-active');
+          const dropdown = item.querySelector('.dropdown-menu');
+          if (dropdown) dropdown.style.maxHeight = '0';
         });
       }
-    });
+    }
   });
   
-  // Form submission handler with email functionality
-  if (contactForm) {
-    // Update form action to use FormSubmit service
-    contactForm.setAttribute('action', 'https://formsubmit.co/mehulsingh1209@gmail.com');
-    contactForm.setAttribute('method', 'POST');
-    
-    // Add required hidden fields for FormSubmit configuration
-    const createHiddenInput = (name, value) => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = name;
-      input.value = value;
-      return input;
-    };
-    
-    // Add redirect back to portfolio page after submission
-    contactForm.appendChild(createHiddenInput('_next', window.location.href));
-    
-    // Disable captcha
-    contactForm.appendChild(createHiddenInput('_captcha', 'false'));
-    
-    // Set subject of email
-    contactForm.appendChild(createHiddenInput('_subject', 'New Portfolio Contact Form Submission'));
-    
-    // Add name attributes to form inputs if they don't exist
-    const nameInput = contactForm.querySelector('input[type="text"]');
-    const emailInput = contactForm.querySelector('input[type="email"]');
-    const messageInput = contactForm.querySelector('textarea');
-    
-    if (!nameInput.hasAttribute('name')) nameInput.setAttribute('name', 'name');
-    if (!emailInput.hasAttribute('name')) emailInput.setAttribute('name', 'email');
-    if (!messageInput.hasAttribute('name')) messageInput.setAttribute('name', 'message');
-    
-    // Add form submission feedback
-    contactForm.addEventListener('submit', function() {
-      // We don't need to preventDefault as we want the form to submit now
-      const submitBtn = this.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-      
-      // Change button text to indicate submission
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-      
-      // Button will automatically reset when page reloads after submission
-    });
-  }
+  // Add swipe functionality to close/open menu
+  let touchStartX = 0;
+  let touchEndX = 0;
   
-  // Add animation to sections on scroll
-  const revealOnScroll = () => {
-    const sections = document.querySelectorAll('section');
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, false);
+  
+  document.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, false);
+  
+  function handleSwipe() {
+    const swipeThreshold = 100; // Minimum distance for swipe to register
     
-    sections.forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-      
-      if (sectionTop < windowHeight - 100) {
-        section.style.opacity = '1';
-        section.style.transform = 'translateY(0)';
+    // Swipe right to open menu
+    if (touchEndX - touchStartX > swipeThreshold && !navLinks.classList.contains('active')) {
+      navLinks.classList.add('active');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (icon) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
       }
-    });
-  };
-  
-  // Initial setup for reveal animation
-  document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  });
-  
-  // Run reveal on load and scroll
-  window.addEventListener('load', revealOnScroll);
-  window.addEventListener('scroll', revealOnScroll);
+    }
+    
+    // Swipe left to close menu
+    if (touchStartX - touchEndX > swipeThreshold && navLinks.classList.contains('active')) {
+      navLinks.classList.remove('active');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (icon) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    }
+  }
 });
