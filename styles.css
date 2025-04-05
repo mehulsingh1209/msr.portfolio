@@ -219,7 +219,7 @@ header::before {
   width: 150px;
   height: 150px;
   margin: 0 auto 1.5rem;
-  border-radius: 50%;
+  border-radius: var(--border-radius-md); /* Changed from 50% to use a medium border radius */
   overflow: hidden;
   border: 5px solid rgba(255, 255, 255, 0.3);
   box-shadow: var(--shadow);
