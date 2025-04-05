@@ -194,25 +194,25 @@ nav .container {
   outline-offset: 2px;
 }
 
-/* Enhanced Header section */
+/* Modify the header styling to accommodate the icons */
 header {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
   text-align: center;
-  padding: 5rem 0 3rem;
+  padding: 5rem 0 2rem; /* Reduced bottom padding */
   position: relative;
   overflow: hidden;
 }
 
-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 40%);
-  z-index: 1;
+/* Modify the contact-info section to be more organized */
+.contact-info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 1.5rem 0; /* Adjusted margin */
+  position: relative;
+  z-index: 2;
 }
 
 .profile-img {
@@ -286,15 +286,16 @@ header p {
   transform: translateY(-2px);
 }
 
+/* Move the social links to the header and adjust styling */
 .social-links {
   display: flex;
   justify-content: center;
   gap: 1.25rem;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 0; /* Adjusted margin */
   position: relative;
   z-index: 2;
-  list-style: none; /* Added */
-  padding: 0; /* Added */
+  list-style: none;
+  padding: 0;
 }
 
 .social-links a {
@@ -729,10 +730,8 @@ footer .social-links {
   margin: 1rem 0;
 }
 
-footer .social-links a {
-  font-size: 1.3rem;
-  opacity: 0.8;
-  background-color: rgba(255, 255, 255, 0.08);
+footer .social-links {
+  display: none; /* Hide duplicate footer social links */
 }
 
 .footer-links {
