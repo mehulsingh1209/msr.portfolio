@@ -114,7 +114,10 @@ function animateText(selector) {
   const element = document.querySelector(selector);
   if (!element) return;
   
-  const text = element.textContent;
+  // Store the original text
+  const text = element.textContent.trim();
+  
+  // Clear the element but save its contents first
   element.textContent = '';
   element.style.opacity = '1';
   
@@ -147,6 +150,7 @@ function animateText(selector) {
     }
   }
   
+  // Start typing after a short delay
   setTimeout(type, 500);
 }
 
