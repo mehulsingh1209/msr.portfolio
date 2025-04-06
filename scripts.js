@@ -1,81 +1,70 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // DOM Elements
+  // Mobile menu toggle
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
   
-  // Mobile menu toggle - add specific checks for null elements
-  if (mobileMenuBtn && navLinks) {
-    // Event listener for the menu button
-    mobileMenuBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      // Toggle the active class on the menu
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', function() {
       navLinks.classList.toggle('active');
-      
-      // Toggle icon between bars and times
-      const icon = this.querySelector('i');
-      if (icon) {
-        if (icon.classList.contains('fa-bars')) {
-          icon.classList.remove('fa-bars');
-          icon.classList.add('fa-times');
-        } else {
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
-        }
-      }
-    });
-  
-    // Close mobile menu when a link is clicked
-    const navLinkElements = document.querySelectorAll('.nav-links a');
-    navLinkElements.forEach(link => {
-      link.addEventListener('click', function() {
-        navLinks.classList.remove('active');
-        
-        // Reset icon
-        const icon = mobileMenuBtn.querySelector('i');
-        if (icon) {
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
-        }
-      });
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-      if (navLinks.classList.contains('active') && 
-          !navLinks.contains(e.target) && 
-          e.target !== mobileMenuBtn && 
-          !mobileMenuBtn.contains(e.target)) {
-        navLinks.classList.remove('active');
-        
-        // Reset icon
-        const icon = mobileMenuBtn.querySelector('i');
-        if (icon) {
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
-        }
-      }
     });
   }
   
-  // Ensure proper mobile menu behavior on orientation change or resize
-  window.addEventListener('resize', function() {
-    if (window.innerWidth > 768 && navLinks) { // Adjust breakpoint to match your CSS
+  // Close mobile menu when clicking a link
+  const navItems = document.querySelectorAll('.nav-links a');
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
       navLinks.classList.remove('active');
-      
-      const icon = mobileMenuBtn?.querySelector('i');
-      if (icon) {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      }
+    });
+  });
+  
+  // Scroll to top button
+  const scrollToTopBtn = document.querySelector('.scroll-to-top');
+  
+  window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+      scrollToTopBtn.classList.add('visible');
+    } else {
+      scrollToTopBtn.classList.remove('visible');
     }
   });
   
-  // Fix for iOS touch events
-  if (navLinks) {
-    navLinks.addEventListener('touchstart', function(e) {
-      // This prevents issues with scrolling and clicking in iOS
-    }, { passive: true });
-  }
+  scrollToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+  
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 70, // Adjust for navbar height
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Add animation to sections when they come into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+  });
 });
