@@ -27,12 +27,13 @@ html {
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Courier New', monospace; /* Code-like font for all text */
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--background);
   overflow-x: hidden;
   position: relative;
+  letter-spacing: -0.5px; /* Tighten letter spacing for code look */
 }
 
 /* Creative Background Elements */
@@ -76,10 +77,25 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
   color: var(--text-color);
+  font-family: 'Courier New', monospace;
+  letter-spacing: -1px; /* Tighten letter spacing like logo */
+  position: relative;
 }
 
 h1 {
   font-size: 2.5rem;
+}
+
+/* Add cursor-like element to headings */
+h1::after, h3::after {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 0.8em;
+  background: var(--primary-color);
+  margin-left: 4px;
+  animation: cursor-blink 1.2s infinite;
+  vertical-align: middle;
 }
 
 h2 {
@@ -88,6 +104,16 @@ h2 {
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 0.5rem;
+}
+
+/* Add terminal-like prefix to section headings */
+section h2::before {
+  content: "$ ";
+  color: var(--primary-color);
+  opacity: 0.8;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
 }
 
 h2::after {
@@ -108,12 +134,16 @@ h3 {
 
 p {
   margin-bottom: 1.5rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
 }
 
 a {
   color: var(--primary-color);
   text-decoration: none;
   transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
 }
 
 a:hover {
@@ -123,6 +153,8 @@ a:hover {
 ul {
   list-style-position: inside;
   margin-bottom: 1.5rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
 }
 
 li {
@@ -221,6 +253,9 @@ li {
   padding: 0.5rem 1rem;
   font-weight: 500;
   position: relative;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
+  font-weight: 600;
 }
 
 .nav-links a::after {
@@ -232,6 +267,18 @@ li {
   height: 2px;
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
   transition: width 0.3s ease;
+}
+
+/* Add cursor blink effect to navigation links on hover */
+.nav-links a:hover::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 25%;
+  width: 3px;
+  height: 50%;
+  background: var(--primary-color);
+  animation: cursor-blink 1.2s infinite;
 }
 
 .nav-links a:hover::after {
@@ -397,6 +444,16 @@ header p {
   font-weight: 500;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "> ";
+  opacity: 0.8;
 }
 
 .btn i {
@@ -452,6 +509,22 @@ section::before {
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  position: relative;
+}
+
+.skill-tag::before {
+  content: "<";
+  margin-right: 2px;
+  opacity: 0.7;
+}
+
+.skill-tag::after {
+  content: "/>";
+  margin-left: 2px;
+  opacity: 0.7;
 }
 
 .skill-tag:hover {
@@ -485,12 +558,19 @@ section::before {
 }
 
 .position span:first-child {
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
   font-weight: 700;
   font-size: 1.1rem;
-  color: var(--text-color);
+  color: var(--primary-color);
 }
 
 .date {
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
+  background: rgba(37, 99, 235, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
   font-size: 0.9rem;
   color: var(--text-light);
 }
@@ -498,6 +578,9 @@ section::before {
 .company {
   color: var(--primary-color);
   margin-bottom: 1rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
+  font-weight: 600;
 }
 
 .company i {
@@ -520,6 +603,9 @@ section::before {
   background-color: #f9fafb;
   border-radius: var(--border-radius);
   transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
+  border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .interest-item:hover {
@@ -545,7 +631,8 @@ section::before {
   padding: 0.75rem;
   border: 1px solid #e5e7eb;
   border-radius: var(--border-radius);
-  font-family: inherit;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
   transition: all 0.3s ease;
 }
 
@@ -570,6 +657,8 @@ footer {
   color: white;
   padding: 2rem 0;
   margin-top: 3rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
 }
 
 footer .container {
