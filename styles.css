@@ -3,15 +3,17 @@
   --primary-color: #2563eb;
   --primary-dark: #1d4ed8;
   --secondary-color: #4f46e5;
+  --accent-color: #8b5cf6;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
   --text-color: #1f2937;
   --text-light: #4b5563;
   --background: #ffffff;
   --background-alt: #f3f4f6;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
   --border-radius: 8px;
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --code-font: 'Courier New', monospace;
 }
 
 /* Reset & Global Styles */
@@ -60,6 +62,30 @@ body::after {
     linear-gradient(225deg, rgba(16, 185, 129, 0.02) 10%, rgba(245, 158, 11, 0) 80%);
   z-index: -1;
   pointer-events: none;
+}
+
+/* Code Styling */
+code, pre, .code-like, .logo {
+  font-family: var(--code-font);
+  background-color: #f1f5f9;
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+  font-size: 0.9em;
+  color: var(--primary-dark);
+  letter-spacing: -0.5px;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--primary-color);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
 }
 
 /* Containers */
@@ -141,13 +167,13 @@ li {
   font-weight: bold;
   text-decoration: none;
   font-size: 1.1rem;
-  font-family: 'Courier New', monospace; /* Code-like font */
-  border-radius: 4px; /* Keep square with slightly rounded corners */
+  font-family: var(--code-font);
+  border-radius: 4px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  letter-spacing: -1px; /* Tighten letter spacing for code look */
+  letter-spacing: -1px;
 }
 
 .logo::before {
@@ -188,7 +214,7 @@ li {
   transform: translateX(0);
 }
 
-/* Navigation */
+/* Enhanced Navigation with Icons */
 .navbar {
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -221,6 +247,16 @@ li {
   padding: 0.5rem 1rem;
   font-weight: 500;
   position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.nav-links a i {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
 }
 
 .nav-links a::after {
@@ -238,6 +274,11 @@ li {
   width: 100%;
 }
 
+.nav-links a:hover i {
+  transform: translateY(-2px);
+  color: var(--secondary-color);
+}
+
 .mobile-menu-btn {
   display: none;
   background: none;
@@ -247,7 +288,7 @@ li {
   cursor: pointer;
 }
 
-/* Header/Hero Section */
+/* Enhanced Header/Hero Section */
 header {
   background: linear-gradient(135deg, #f6f7f8 0%, #e9eef2 100%);
   padding: 6rem 0 4rem;
@@ -283,11 +324,11 @@ header .container {
   z-index: 1;
 }
 
-/* Profile Image with More Square Shape */
+/* Enhanced Profile Image with Code-Like Elements */
 .profile-img {
   width: 180px;
   height: 180px;
-  border-radius: 12px; /* Less rounded for more square appearance */
+  border-radius: 12px;
   overflow: hidden;
   margin: 0 auto 2rem;
   border: 4px solid white;
@@ -307,6 +348,21 @@ header .container {
   z-index: 1;
 }
 
+/* Code decorations on profile image */
+.profile-img::after {
+  content: "{...}";
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  background: var(--primary-color);
+  color: white;
+  font-family: var(--code-font);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 .profile-img img {
   width: 100%;
   height: 100%;
@@ -320,6 +376,29 @@ header h1 {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+/* Code-like decoration */
+header h1::before {
+  content: "<";
+  position: absolute;
+  left: -1.5rem;
+  top: 0;
+  color: var(--text-light);
+  opacity: 0.5;
+  font-family: var(--code-font);
+}
+
+header h1::after {
+  content: "/>";
+  position: absolute;
+  right: -2rem;
+  top: 0;
+  color: var(--text-light);
+  opacity: 0.5;
+  font-family: var(--code-font);
 }
 
 header p {
@@ -328,6 +407,31 @@ header p {
   margin-bottom: 1.5rem;
 }
 
+header p.tagline {
+  color: var(--secondary-color);
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+  padding: 0 1rem;
+}
+
+header p.tagline::before,
+header p.tagline::after {
+  content: "~";
+  color: var(--primary-color);
+  position: absolute;
+  font-family: var(--code-font);
+}
+
+header p.tagline::before {
+  left: 0;
+}
+
+header p.tagline::after {
+  right: 0;
+}
+
+/* Enhanced Contact Info With Icons */
 .contact-info {
   display: flex;
   justify-content: center;
@@ -336,28 +440,74 @@ header p {
 
 .contact-item {
   margin: 0 1rem;
+  position: relative;
 }
 
 .contact-item a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: white;
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   border-radius: 50%;
-  color: var(--primary-color);
+  color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-item a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2));
+  z-index: 1;
+}
+
+.contact-item a i {
+  font-size: 1.2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .contact-item a:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px) rotate(5deg);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  background-color: var(--primary-color);
-  color: white;
 }
 
+.contact-item:nth-child(even) a:hover {
+  transform: translateY(-3px) rotate(-5deg);
+}
+
+/* Tooltip for contact items */
+.contact-item::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--text-color);
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.contact-item:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Colorful Social Links */
 .social-links {
   display: flex;
   justify-content: center;
@@ -370,22 +520,58 @@ header p {
   justify-content: center;
   width: 40px;
   height: 40px;
-  background-color: white;
   border-radius: 50%;
-  color: var(--primary-color);
   margin: 0 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
 }
 
-.social-links a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  background-color: var(--primary-color);
+.social-links a i {
+  position: relative;
+  z-index: 2;
   color: white;
 }
 
-/* Buttons */
+/* Different colors for different social links */
+.social-links a.github {
+  background-color: #333;
+}
+
+.social-links a.linkedin {
+  background-color: #0077b5;
+}
+
+.social-links a.twitter {
+  background-color: #1da1f2;
+}
+
+.social-links a.dribbble {
+  background-color: #ea4c89;
+}
+
+.social-links a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.3));
+  z-index: 1;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px) rotate(5deg);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.social-links a:nth-child(even):hover {
+  transform: translateY(-3px) rotate(-5deg);
+}
+
+/* Enhanced Buttons with Code-like styling */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -397,17 +583,46 @@ header p {
   font-weight: 500;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.btn i {
-  margin-right: 0.5rem;
+.btn::before {
+  content: "<";
+  position: absolute;
+  left: 10px;
+  font-family: var(--code-font);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.btn::after {
+  content: "/>";
+  position: absolute;
+  right: 10px;
+  font-family: var(--code-font);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.btn:hover::before,
+.btn:hover::after {
+  opacity: 0.7;
 }
 
 .btn:hover {
+  padding: 0.75rem 2rem;
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   color: white;
 }
+
+.btn i {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Rest of CSS remains the same... */
 
 /* Section Styling */
 section {
@@ -428,6 +643,45 @@ section::before {
   width: 100%;
   height: 5px;
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Section specific headers with icons */
+section h2 {
+  display: flex;
+  align-items: center;
+}
+
+section h2 i {
+  margin-right: 0.75rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 1.8rem;
+}
+
+#skills h2 i {
+  color: var(--primary-color);
+}
+
+#experience h2 i {
+  color: var(--success-color);
+}
+
+#education h2 i {
+  color: var(--secondary-color);
+}
+
+#projects h2 i {
+  color: var(--warning-color);
+}
+
+#interests h2 i {
+  color: var(--accent-color);
+}
+
+#contact h2 i {
+  color: var(--primary-dark);
 }
 
 /* Skills Section */
@@ -461,6 +715,28 @@ section::before {
 
 .skill-tag i {
   margin-right: 0.5rem;
+  color: var(--secondary-color);
+}
+
+/* Different colored skill tags for different categories */
+.skill-tag.frontend {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--primary-color);
+}
+
+.skill-tag.backend {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+}
+
+.skill-tag.database {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--warning-color);
+}
+
+.skill-tag.tools {
+  background-color: rgba(139, 92, 246, 0.1);
+  color: var(--accent-color);
 }
 
 /* Internships, Education, and Projects */
@@ -493,11 +769,20 @@ section::before {
 .date {
   font-size: 0.9rem;
   color: var(--text-light);
+  display: flex;
+  align-items: center;
+}
+
+.date i {
+  margin-right: 0.4rem;
+  color: var(--primary-color);
 }
 
 .company {
   color: var(--primary-color);
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .company i {
@@ -532,6 +817,10 @@ section::before {
   font-size: 2rem;
   color: var(--primary-color);
   margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Contact Form */
