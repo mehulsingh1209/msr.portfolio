@@ -53,95 +53,31 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Header text animation
-  animateText('header h1');
-  animateText('footer .footer-text');
-  
-  // Animate sections on scroll
-  const sections = document.querySelectorAll('section');
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-  
-  const sectionObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animated');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-  
-  sections.forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    sectionObserver.observe(section);
-  });
-  
-  // Add hover effects to project items
-  const projectItems = document.querySelectorAll('.project-item');
-  projectItems.forEach(item => {
-    item.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-5px)';
-      this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
-      this.style.transition = 'all 0.3s ease';
-    });
-    
-    item.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0)';
-      this.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-    });
-  });
-  
-  // Add typing effect to skill tags
-  const skillTags = document.querySelectorAll('.skill-tag');
-  skillTags.forEach((tag, index) => {
-    tag.style.opacity = '0';
-    tag.style.transform = 'translateY(10px)';
-    
-    setTimeout(() => {
-      tag.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-      tag.style.opacity = '1';
-      tag.style.transform = 'translateY(0)';
-    }, index * 100);
-  });
-});
-
-// Function to animate text with a typing effect
-function animateText(selector) {
+  function animateText(selector) {
   const element = document.querySelector(selector);
   if (!element) return;
   
   // Store the original text
-  const text = element.textContent.trim();
+  const originalText = element.textContent.trim();
   
-  // Clear the element but save its contents first
-  element.textContent = '';
-  element.style.opacity = '1';
+  // Clear the element
+  element.innerHTML = '';
   
-  let charIndex = 0;
-  const typingDelay = 100;
+  // Create a span for the text
+  const textSpan = document.createElement('span');
+  element.appendChild(textSpan);
   
   // Create cursor element
   const cursor = document.createElement('span');
   cursor.classList.add('typing-cursor');
-  cursor.style.display = 'inline-block';
-  cursor.style.width = '3px';
-  cursor.style.height = '1em';
-  cursor.style.backgroundColor = 'currentColor';
-  cursor.style.animation = 'cursor-blink 1.2s infinite';
   element.appendChild(cursor);
   
+  let charIndex = 0;
+  const typingDelay = 100;
+  
   function type() {
-    if (charIndex < text.length) {
-      const char = document.createElement('span');
-      char.textContent = text.charAt(charIndex);
-      char.style.opacity = '0';
-      char.style.animation = 'fadeIn 0.3s forwards';
-      
-      element.insertBefore(char, cursor);
+    if (charIndex < originalText.length) {
+      textSpan.textContent += originalText.charAt(charIndex);
       charIndex++;
       setTimeout(type, typingDelay);
     } else {
@@ -153,7 +89,6 @@ function animateText(selector) {
   // Start typing after a short delay
   setTimeout(type, 500);
 }
-
 // Add hover effects for social links
 document.addEventListener('DOMContentLoaded', function() {
   const socialLinks = document.querySelectorAll('.social-links a');
