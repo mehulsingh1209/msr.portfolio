@@ -1,39 +1,54 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+  // Get navbar element
+  const navbar = document.querySelector('.navbar');
+  const navHeight = navbar.offsetHeight;
+  
+  // Add fixed header functionality
+  window.addEventListener('scroll', function() {
+    // Add fixed class when scrolling down
+    if (window.pageYOffset > 50) {
+      navbar.classList.add('fixed-nav');
+      document.body.style.paddingTop = navHeight + 'px';
+    } else {
+      navbar.classList.remove('fixed-nav');
+      document.body.style.paddingTop = '0';
+    }
+    
+    // Navigation highlight effect - slight shadow when scrolled
+    if (window.pageYOffset > 10) {
+      navbar.classList.add('nav-shadow');
+    } else {
+      navbar.classList.remove('nav-shadow');
+    }
+  });
+
   // Mobile menu toggle functionality
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
-  const navbar = document.querySelector('.navbar');
   
   if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', function() {
       navLinks.classList.toggle('active');
       this.querySelector('i').classList.toggle('fa-bars');
       this.querySelector('i').classList.toggle('fa-times');
+      
+      // Add body lock to prevent scrolling when menu is open
+      document.body.classList.toggle('menu-open');
     });
   }
   
-  // Add navbar scroll effect (fixed position on scroll)
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 50) {
-      navbar.classList.add('navbar-scrolled');
-    } else {
-      navbar.classList.remove('navbar-scrolled');
-    }
-  });
-  
-  // Smooth scrolling for all anchor links with improved offset calculation
+  // Smooth scrolling for all anchor links with navbar offset adjustment
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       
       // Close mobile menu if open
-      if (navLinks && navLinks.classList.contains('active')) {
+      if (navLinks.classList.contains('active')) {
         navLinks.classList.remove('active');
-        if (mobileMenuBtn && mobileMenuBtn.querySelector('i')) {
-          mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-          mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-        }
+        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+        document.body.classList.remove('menu-open');
       }
       
       // Get the target element
@@ -43,27 +58,33 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetElement = document.querySelector(targetId);
       if (!targetElement) return; // Skip if target doesn't exist
       
-      // Calculate scroll position with offset for navbar
-      const navbarHeight = navbar ? navbar.offsetHeight : 0;
-      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20; // Added extra padding
+      // Calculate scroll position with offset for fixed navbar
+      const currentNavHeight = navbar.offsetHeight; // Get current height which may have changed
+      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - currentNavHeight;
       
       // Smooth scroll to target
       window.scrollTo({
         top: targetPosition,
         behavior: 'smooth'
       });
+      
+      // Update active class for clicked link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+      });
+      this.classList.add('active');
     });
   });
   
-  // Scroll to top button functionality with enhanced animation
+  // Scroll to top button functionality
   const scrollToTopBtn = document.querySelector('.scroll-to-top');
   
   // Show/hide scroll to top button based on scroll position
   window.addEventListener('scroll', function() {
     if (window.pageYOffset > 300) {
-      scrollToTopBtn?.classList.add('visible');
+      scrollToTopBtn.classList.add('visible');
     } else {
-      scrollToTopBtn?.classList.remove('visible');
+      scrollToTopBtn.classList.remove('visible');
     }
   });
   
@@ -77,19 +98,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Enhanced animation for header elements on page load
+  // Animation for header elements on page load
   const headerElements = document.querySelectorAll('header h1, header p, header .social-links, header .btn');
   headerElements.forEach((element, index) => {
     // Add a class for CSS animations with a staggered delay
     setTimeout(() => {
       element.classList.add('animate-in');
-    }, 150 * index); // Slightly faster animation
+    }, 200 * index);
   });
   
-  // Animate section headings when they come into view with refined effect
+  // Animate section headings when they come into view
   const sectionHeadings = document.querySelectorAll('section h2');
   
-  // Intersection Observer for section headings with improved threshold
+  // Intersection Observer for section headings
   const headingObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -99,8 +120,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }, {
     root: null,
-    threshold: 0.25, // 25% of the element must be visible
-    rootMargin: '-40px 0px'
+    threshold: 0.2, // 20% of the element must be visible
+    rootMargin: '-50px 0px'
   });
   
   // Observe each section heading
@@ -108,29 +129,37 @@ document.addEventListener('DOMContentLoaded', function() {
     headingObserver.observe(heading);
   });
   
-  // Fixed footer with improved animation
+  // Fix footer to bottom and animate when it comes into view
   const footer = document.querySelector('footer');
+  footer.classList.add('fixed-footer');
+  
+  const footerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        footer.classList.add('animate-footer');
+        footerObserver.unobserve(footer);
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '0px'
+  });
   
   if (footer) {
-    // Add fixed footer class
-    footer.classList.add('fixed-footer');
-    
-    const footerObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          footer.classList.add('animate-footer');
-          footerObserver.unobserve(footer);
-        }
-      });
-    }, {
-      threshold: 0.3,
-      rootMargin: '0px'
-    });
-    
     footerObserver.observe(footer);
+    
+    // Add padding to body equal to footer height to prevent content overlap
+    const footerHeight = footer.offsetHeight;
+    document.body.style.paddingBottom = footerHeight + 'px';
+    
+    // Update padding on window resize
+    window.addEventListener('resize', function() {
+      const updatedFooterHeight = footer.offsetHeight;
+      document.body.style.paddingBottom = updatedFooterHeight + 'px';
+    });
   }
   
-  // Improved animation for section content
+  // Animate section content when it comes into view
   const sectionContent = document.querySelectorAll('section > *:not(h2)');
   
   const contentObserver = new IntersectionObserver((entries) => {
@@ -141,202 +170,120 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }, {
-    threshold: 0.15,
-    rootMargin: '-25px 0px'
+    threshold: 0.1,
+    rootMargin: '-30px 0px'
   });
   
   sectionContent.forEach(content => {
     contentObserver.observe(content);
   });
   
-  // Enhanced active class to navbar links with highlight effect
+  // Enhanced navbar active link detection
   function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section, header');
-    const navLinks = document.querySelectorAll('.nav-links a');
+    const scrollPosition = window.pageYOffset;
     
-    let current = '';
+    // Get all sections and their positions
+    const sections = document.querySelectorAll('section, header');
+    let currentSection = '';
     
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 150; // Increased offset for better accuracy
-      const sectionHeight = section.offsetHeight;
+      const sectionTop = section.offsetTop - navbar.offsetHeight - 20; // Small additional offset
+      const sectionBottom = sectionTop + section.offsetHeight;
       
-      if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
         if (section.id) {
-          current = '#' + section.id;
+          currentSection = '#' + section.id;
         } else if (section.tagName === 'HEADER') {
-          current = '#home';
+          currentSection = '#home';
         }
       }
     });
     
+    // Update active class with smooth transition
+    const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === current) {
-        link.classList.add('active');
+      if (link.getAttribute('href') === currentSection) {
+        if (!link.classList.contains('active')) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
       }
     });
   }
   
   // Update active nav link on scroll with throttling for performance
-  let scrollTimeout;
+  let scrollThrottleTimer;
   window.addEventListener('scroll', function() {
-    if (scrollTimeout) {
-      clearTimeout(scrollTimeout);
+    if (!scrollThrottleTimer) {
+      scrollThrottleTimer = setTimeout(function() {
+        updateActiveNavLink();
+        scrollThrottleTimer = null;
+      }, 100);
     }
-    scrollTimeout = setTimeout(updateActiveNavLink, 50);
   });
   
   // Call once on page load
   updateActiveNavLink();
   
-  // Add CSS for animations and fixed elements
+  // Add navigation hover effects
+  const navItems = document.querySelectorAll('.nav-links a');
+  navItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      this.classList.add('nav-hover');
+    });
+    
+    item.addEventListener('mouseleave', function() {
+      this.classList.remove('nav-hover');
+    });
+  });
+
+  // Add inline JavaScript CSS styles
   const style = document.createElement('style');
   style.textContent = `
-    /* Navbar scroll effect */
+    /* Fixed navigation styles added via JavaScript */
+    body {
+      transition: padding 0.3s ease;
+    }
+    
+    body.menu-open {
+      overflow: hidden;
+    }
+    
     .navbar {
+      transition: all 0.3s ease;
+    }
+    
+    .fixed-nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1000;
-      transition: all 0.3s ease;
-      padding: 20px 0;
-      background: rgba(255, 255, 255, 0.95);
+      background-color: rgba(255, 255, 255, 0.95);
     }
     
-    .navbar-scrolled {
-      padding: 10px 0;
+    .nav-shadow {
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      background: rgba(255, 255, 255, 0.98);
     }
     
-    /* Adjust body padding for fixed navbar */
-    body {
-      padding-top: 80px;
-    }
-    
-    /* Header animations with enhanced timing */
-    header h1, header p, header .social-links, header .btn {
-      opacity: 0;
-      transform: translateY(15px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    
-    header h1.animate-in, header p.animate-in, header .social-links.animate-in, header .btn.animate-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Professional section heading animations */
-    section h2 {
-      position: relative;
-      opacity: 0;
-      transform: translateX(-15px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    
-    section h2.animate-heading {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    
-    section h2.animate-heading::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: #2563eb;
-      animation: heading-underline 0.7s forwards 0.2s;
-    }
-    
-    @keyframes heading-underline {
-      to { width: 50px; }
-    }
-    
-    /* Fixed footer styling */
+    /* Fixed footer styles */
     .fixed-footer {
-      position: relative;
-      margin-top: 50px;
-      padding: 30px 0;
-      background-color: #f9fafb;
-      border-top: 1px solid #e5e7eb;
-    }
-    
-    footer.animate-footer {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Improved content fade-in animation */
-    .fade-in {
-      animation: fadeIn 0.7s forwards;
-    }
-    
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* Enhanced scroll to top button */
-    .scroll-to-top {
-      opacity: 0;
-      visibility: hidden;
       position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: #2563eb;
-      color: white;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      z-index: 1000;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 990;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     }
     
-    .scroll-to-top.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .scroll-to-top:hover {
-      background: #1d4ed8;
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-    
-    /* Professional active nav link styling */
+    /* Navigation hover effect */
     .nav-links a {
       position: relative;
-      padding: 8px 0;
-      margin: 0 15px;
-      color: #374151;
-      font-weight: 500;
       transition: color 0.3s ease;
     }
     
-    .nav-links a:hover {
-      color: #2563eb;
-    }
-    
-    .nav-links a.active {
-      color: #2563eb;
-      font-weight: 600;
-    }
-    
-    .nav-links a::after {
+    .nav-links a::before {
       content: '';
       position: absolute;
       bottom: -2px;
@@ -347,12 +294,31 @@ document.addEventListener('DOMContentLoaded', function() {
       transition: width 0.3s ease;
     }
     
-    .nav-links a:hover::after {
-      width: 30%;
+    .nav-links a:hover::before,
+    .nav-links a.nav-hover::before {
+      width: 100%;
+    }
+    
+    /* Active nav link - enhanced */
+    .nav-links a.active {
+      color: #2563eb;
+      font-weight: 600;
     }
     
     .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
       width: 100%;
+      height: 2px;
+      background-color: #2563eb;
+      animation: activeLink 0.3s ease-in-out;
+    }
+    
+    @keyframes activeLink {
+      0% { width: 0; left: 50%; }
+      100% { width: 100%; left: 0; }
     }
   `;
   
