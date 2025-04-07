@@ -86,15 +86,9 @@ h1 {
   font-size: 2.5rem;
 }
 
-/* Removed cursor-like element animation from headings */
+/* Removed vertical bar after headings */
 h1::after, h3::after {
-  content: "";
-  display: inline-block;
-  width: 3px;
-  height: 0.8em;
-  background: var(--primary-color);
-  margin-left: 4px;
-  vertical-align: middle;
+  display: none;
 }
 
 h2 {
@@ -193,18 +187,16 @@ li {
   transition: transform 0.3s ease;
 }
 
-/* Removed cursor blink animation from logo */
+/* Modified cursor element - single professional indicator */
 .logo::after {
   content: "";
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 4px;
-  height: 70%;
+  width: 2px;
+  height: 50%;
   background: rgba(255, 255, 255, 0.7);
 }
-
-/* Removed cursor-blink keyframe animation */
 
 .logo:hover {
   background-color: #1d4ed8;
@@ -265,17 +257,7 @@ li {
   transition: width 0.3s ease;
 }
 
-/* Removed cursor blink effect from navigation links on hover */
-.nav-links a:hover::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 25%;
-  width: 3px;
-  height: 50%;
-  background: var(--primary-color);
-}
-
+/* Simplified hover effect - removed cursor indicator */
 .nav-links a:hover::after {
   width: 100%;
 }
@@ -425,9 +407,11 @@ header p {
   overflow: hidden;
 }
 
+/* Simplified button prefix - single professional indicator */
 .btn::before {
-  content: "> ";
+  content: ">";
   opacity: 0.8;
+  margin-right: 5px;
 }
 
 .btn i {
@@ -489,16 +473,17 @@ section::before {
   position: relative;
 }
 
+/* Simplified skill tag - using only one code indicator */
 .skill-tag::before {
-  content: "<";
-  margin-right: 2px;
+  content: "<>";
+  margin-right: 5px;
   opacity: 0.7;
+  font-size: 0.8em;
 }
 
+/* Removed after pseudo-element */
 .skill-tag::after {
-  content: "/>";
-  margin-left: 2px;
-  opacity: 0.7;
+  display: none;
 }
 
 .skill-tag:hover {
@@ -557,6 +542,7 @@ section::before {
   font-weight: 600;
 }
 
+/* Ensure only one icon per company element */
 .company i {
   margin-right: 0.5rem;
 }
@@ -588,6 +574,7 @@ section::before {
   background-color: #f3f4f6;
 }
 
+/* Keep only one professional icon per interest */
 .interest-icon {
   font-size: 2rem;
   color: var(--primary-color);
@@ -654,8 +641,6 @@ footer .social-links a:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Removed Scroll to Top Button - JS dependent */
-
 /* Responsive Design */
 @media (max-width: 991px) {
   html {
@@ -700,8 +685,6 @@ footer .social-links a:hover {
     transition: all 0.3s ease;
     z-index: 10;
   }
-  
-  /* Removed .nav-links.active class - JS dependent */
   
   .nav-links li {
     margin: 0.5rem 0;
@@ -788,5 +771,3 @@ footer .social-links a:hover {
     width: 100%;
   }
 }
-
-/* Removed Animation Effects section - JS dependent */
