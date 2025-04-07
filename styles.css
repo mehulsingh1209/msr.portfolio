@@ -86,7 +86,7 @@ h1 {
   font-size: 2.5rem;
 }
 
-/* Add cursor-like element to headings */
+/* Removed cursor-like element animation from headings */
 h1::after, h3::after {
   content: "";
   display: inline-block;
@@ -94,7 +94,6 @@ h1::after, h3::after {
   height: 0.8em;
   background: var(--primary-color);
   margin-left: 4px;
-  animation: cursor-blink 1.2s infinite;
   vertical-align: middle;
 }
 
@@ -194,6 +193,7 @@ li {
   transition: transform 0.3s ease;
 }
 
+/* Removed cursor blink animation from logo */
 .logo::after {
   content: "";
   position: absolute;
@@ -202,13 +202,9 @@ li {
   width: 4px;
   height: 70%;
   background: rgba(255, 255, 255, 0.7);
-  animation: cursor-blink 1.2s infinite;
 }
 
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
+/* Removed cursor-blink keyframe animation */
 
 .logo:hover {
   background-color: #1d4ed8;
@@ -269,7 +265,7 @@ li {
   transition: width 0.3s ease;
 }
 
-/* Add cursor blink effect to navigation links on hover */
+/* Removed cursor blink effect from navigation links on hover */
 .nav-links a:hover::before {
   content: "";
   position: absolute;
@@ -278,7 +274,6 @@ li {
   width: 3px;
   height: 50%;
   background: var(--primary-color);
-  animation: cursor-blink 1.2s infinite;
 }
 
 .nav-links a:hover::after {
@@ -304,14 +299,11 @@ header {
   overflow: hidden;
 }
 
-/* Removed the header::before element that had the rotate animation */
-
-/* Removed the @keyframes rotate animation */
-
 header .container {
   position: relative;
   z-index: 1;
 }
+
 /* Profile Image with More Square Shape */
 .profile-img {
   width: 180px;
@@ -662,36 +654,7 @@ footer .social-links a:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Scroll to Top Button */
-.scroll-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.scroll-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.scroll-to-top:hover {
-  transform: translateY(-3px);
-  background-color: var(--primary-dark);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
+/* Removed Scroll to Top Button - JS dependent */
 
 /* Responsive Design */
 @media (max-width: 991px) {
@@ -738,10 +701,7 @@ footer .social-links a:hover {
     z-index: 10;
   }
   
-  .nav-links.active {
-    transform: scaleY(1);
-    opacity: 1;
-  }
+  /* Removed .nav-links.active class - JS dependent */
   
   .nav-links li {
     margin: 0.5rem 0;
@@ -827,36 +787,6 @@ footer .social-links a:hover {
   #contact-form button {
     width: 100%;
   }
-  
-  .scroll-to-top {
-    right: 15px;
-    bottom: 15px;
-  }
 }
 
-/* Animation Effects */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-section {
-  animation: fadeInUp 0.6s ease-out forwards;
-  opacity: 0;
-}
-
-section:nth-child(1) { animation-delay: 0.1s; }
-section:nth-child(2) { animation-delay: 0.2s; }
-section:nth-child(3) { animation-delay: 0.3s; }
-section:nth-child(4) { animation-delay: 0.4s; }
-section:nth-child(5) { animation-delay: 0.5s; }
-section:nth-child(6) { animation-delay: 0.6s; }
-section:nth-child(7) { animation-delay: 0.7s; }
-section:nth-child(8) { animation-delay: 0.8s; }
-section:nth-child(9) { animation-delay: 0.9s; }
+/* Removed Animation Effects section - JS dependent */
