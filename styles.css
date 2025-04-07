@@ -97,15 +97,19 @@ h2 {
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 0.5rem;
+  padding-left: 28px; /* Space for the icon */
 }
 
-/* Add terminal-like prefix to section headings */
+/* Replace terminal-like prefix with an attractive icon */
 section h2::before {
-  content: "$ ";
+  content: "◆";  /* Diamond icon - simple and attractive */
   color: var(--primary-color);
-  opacity: 0.8;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.2rem;
+  opacity: 0.9;
   font-weight: bold;
-  position: relative;
   z-index: 1;
 }
 
