@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Mobile menu toggle functionality
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
+  const navbar = document.querySelector('.navbar');
   
   if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', function() {
@@ -12,16 +13,27 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Smooth scrolling for all anchor links
+  // Add navbar scroll effect (fixed position on scroll)
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+      navbar.classList.add('navbar-scrolled');
+    } else {
+      navbar.classList.remove('navbar-scrolled');
+    }
+  });
+  
+  // Smooth scrolling for all anchor links with improved offset calculation
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       
       // Close mobile menu if open
-      if (navLinks.classList.contains('active')) {
+      if (navLinks && navLinks.classList.contains('active')) {
         navLinks.classList.remove('active');
-        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+        if (mobileMenuBtn && mobileMenuBtn.querySelector('i')) {
+          mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+          mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+        }
       }
       
       // Get the target element
@@ -32,8 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!targetElement) return; // Skip if target doesn't exist
       
       // Calculate scroll position with offset for navbar
-      const navbarHeight = document.querySelector('.navbar').offsetHeight;
-      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20; // Added extra padding
       
       // Smooth scroll to target
       window.scrollTo({
@@ -43,15 +55,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Scroll to top button functionality
+  // Scroll to top button functionality with enhanced animation
   const scrollToTopBtn = document.querySelector('.scroll-to-top');
   
   // Show/hide scroll to top button based on scroll position
   window.addEventListener('scroll', function() {
     if (window.pageYOffset > 300) {
-      scrollToTopBtn.classList.add('visible');
+      scrollToTopBtn?.classList.add('visible');
     } else {
-      scrollToTopBtn.classList.remove('visible');
+      scrollToTopBtn?.classList.remove('visible');
     }
   });
   
@@ -65,19 +77,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Animation for header elements on page load
+  // Enhanced animation for header elements on page load
   const headerElements = document.querySelectorAll('header h1, header p, header .social-links, header .btn');
   headerElements.forEach((element, index) => {
     // Add a class for CSS animations with a staggered delay
     setTimeout(() => {
       element.classList.add('animate-in');
-    }, 200 * index);
+    }, 150 * index); // Slightly faster animation
   });
   
-  // Animate section headings when they come into view
+  // Animate section headings when they come into view with refined effect
   const sectionHeadings = document.querySelectorAll('section h2');
   
-  // Intersection Observer for section headings
+  // Intersection Observer for section headings with improved threshold
   const headingObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -87,8 +99,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }, {
     root: null,
-    threshold: 0.2, // 20% of the element must be visible
-    rootMargin: '-50px 0px'
+    threshold: 0.25, // 25% of the element must be visible
+    rootMargin: '-40px 0px'
   });
   
   // Observe each section heading
@@ -96,26 +108,29 @@ document.addEventListener('DOMContentLoaded', function() {
     headingObserver.observe(heading);
   });
   
-  // Animate footer when it comes into view
+  // Fixed footer with improved animation
   const footer = document.querySelector('footer');
   
-  const footerObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        footer.classList.add('animate-footer');
-        footerObserver.unobserve(footer);
-      }
-    });
-  }, {
-    threshold: 0.2,
-    rootMargin: '0px'
-  });
-  
   if (footer) {
+    // Add fixed footer class
+    footer.classList.add('fixed-footer');
+    
+    const footerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          footer.classList.add('animate-footer');
+          footerObserver.unobserve(footer);
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '0px'
+    });
+    
     footerObserver.observe(footer);
   }
   
-  // Animate section content when it comes into view
+  // Improved animation for section content
   const sectionContent = document.querySelectorAll('section > *:not(h2)');
   
   const contentObserver = new IntersectionObserver((entries) => {
@@ -126,15 +141,15 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }, {
-    threshold: 0.1,
-    rootMargin: '-30px 0px'
+    threshold: 0.15,
+    rootMargin: '-25px 0px'
   });
   
   sectionContent.forEach(content => {
     contentObserver.observe(content);
   });
   
-  // Add active class to navbar links based on scroll position
+  // Enhanced active class to navbar links with highlight effect
   function updateActiveNavLink() {
     const sections = document.querySelectorAll('section, header');
     const navLinks = document.querySelectorAll('.nav-links a');
@@ -142,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let current = '';
     
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
+      const sectionTop = section.offsetTop - 150; // Increased offset for better accuracy
       const sectionHeight = section.offsetHeight;
       
       if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
@@ -162,20 +177,49 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Update active nav link on scroll
-  window.addEventListener('scroll', updateActiveNavLink);
+  // Update active nav link on scroll with throttling for performance
+  let scrollTimeout;
+  window.addEventListener('scroll', function() {
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout);
+    }
+    scrollTimeout = setTimeout(updateActiveNavLink, 50);
+  });
   
   // Call once on page load
   updateActiveNavLink();
   
-  // Add CSS for animations that will be applied by JS
+  // Add CSS for animations and fixed elements
   const style = document.createElement('style');
   style.textContent = `
-    /* Header animations */
+    /* Navbar scroll effect */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      padding: 20px 0;
+      background: rgba(255, 255, 255, 0.95);
+    }
+    
+    .navbar-scrolled {
+      padding: 10px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.98);
+    }
+    
+    /* Adjust body padding for fixed navbar */
+    body {
+      padding-top: 80px;
+    }
+    
+    /* Header animations with enhanced timing */
     header h1, header p, header .social-links, header .btn {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(15px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
     
     header h1.animate-in, header p.animate-in, header .social-links.animate-in, header .btn.animate-in {
@@ -183,11 +227,11 @@ document.addEventListener('DOMContentLoaded', function() {
       transform: translateY(0);
     }
     
-    /* Section heading animations */
+    /* Professional section heading animations */
     section h2 {
       position: relative;
       opacity: 0;
-      transform: translateX(-20px);
+      transform: translateX(-15px);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
     
@@ -202,20 +246,22 @@ document.addEventListener('DOMContentLoaded', function() {
       bottom: -5px;
       left: 0;
       width: 0;
-      height: 3px;
+      height: 2px;
       background-color: #2563eb;
-      animation: heading-underline 0.8s forwards 0.3s;
+      animation: heading-underline 0.7s forwards 0.2s;
     }
     
     @keyframes heading-underline {
-      to { width: 60px; }
+      to { width: 50px; }
     }
     
-    /* Footer animation */
-    footer {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+    /* Fixed footer styling */
+    .fixed-footer {
+      position: relative;
+      margin-top: 50px;
+      padding: 30px 0;
+      background-color: #f9fafb;
+      border-top: 1px solid #e5e7eb;
     }
     
     footer.animate-footer {
@@ -223,15 +269,15 @@ document.addEventListener('DOMContentLoaded', function() {
       transform: translateY(0);
     }
     
-    /* Content fade-in animation */
+    /* Improved content fade-in animation */
     .fade-in {
-      animation: fadeIn 0.8s forwards;
+      animation: fadeIn 0.7s forwards;
     }
     
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(12px);
       }
       to {
         opacity: 1;
@@ -239,24 +285,25 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
-    /* Scroll to top button animation */
+    /* Enhanced scroll to top button */
     .scroll-to-top {
       opacity: 0;
       visibility: hidden;
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 25px;
+      right: 25px;
       background: #2563eb;
       color: white;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       z-index: 1000;
-      transition: opacity 0.3s, visibility 0.3s, background-color 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     
     .scroll-to-top.visible {
@@ -266,23 +313,46 @@ document.addEventListener('DOMContentLoaded', function() {
     
     .scroll-to-top:hover {
       background: #1d4ed8;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
     
-    /* Active nav link */
+    /* Professional active nav link styling */
+    .nav-links a {
+      position: relative;
+      padding: 8px 0;
+      margin: 0 15px;
+      color: #374151;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+    
     .nav-links a.active {
       color: #2563eb;
       font-weight: 600;
-      position: relative;
     }
     
-    .nav-links a.active::after {
+    .nav-links a::after {
       content: '';
       position: absolute;
       bottom: -2px;
       left: 0;
-      width: 100%;
+      width: 0;
       height: 2px;
       background-color: #2563eb;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after {
+      width: 30%;
+    }
+    
+    .nav-links a.active::after {
+      width: 100%;
     }
   `;
   
