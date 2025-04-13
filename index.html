@@ -2,13 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="description" content="Mehul Singh - Full-Stack Developer & AI/ML Specialist. Portfolio showcasing skills, projects, and experience in web development and machine learning.">
   <meta name="keywords" content="Mehul Singh, Full-Stack Developer, AI/ML Specialist, Web Development, Machine Learning, React, Node.js, Python">
-  <meta name="author" content="Mehul">
+  <meta name="author" content="Mehul Singh">
   <meta name="theme-color" content="#2563eb">
-  <title>MSR - Portfolio</title>
-  <link rel="icon" href="favicon.ico">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Mehul Singh - Full-Stack Developer & AI/ML Specialist</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="preload" href="2025.jpg" as="image">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <style>
@@ -34,90 +41,117 @@
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container">
-      <a href="#" class="logo">MSR</a>
-      <button class="mobile-menu-btn" aria-label="Toggle menu">
-        <i class="fa fa-bars"></i>
+      <a href="#" class="logo" aria-label="MSR Logo">MSR</a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <i class="fa fa-bars" aria-hidden="true"></i>
       </button>
-      <ul class="nav-links">
-        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
-        <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
-        <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
-        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" aria-current="page"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
+        <li><a href="#about"><i class="fas fa-user" aria-hidden="true"></i> About</a></li>
+        <li><a href="#skills"><i class="fas fa-code" aria-hidden="true"></i> Skills</a></li>
+        <li><a href="#projects"><i class="fas fa-project-diagram" aria-hidden="true"></i> Projects</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Header/Hero Section -->
-  <header id="home">
-    <div class="bg-pattern"></div>
+  <header id="home" class="hero">
+    <div class="bg-pattern" aria-hidden="true"></div>
     <div class="container">
-      <div class="profile-img">
-        <img src="2025.jpg" alt="Mehul Singh" loading="lazy">
-      </div>
-      <h1>Mehul Singh</h1>
-      <p class="tagline">Web / App & AI Developer</p>
-      <div class="contact-info">
-        <div class="contact-item">
-          <a href="https://maps.google.com/?q=Ghantaghar+Clock+Tower,+Birgunj,+Nepal" target="_blank" aria-label="Location">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Birgunj, Nepal</span>
+      <div class="hero-content">
+        <div class="profile-img-wrapper">
+          <div class="profile-img">
+            <img src="2025.jpg" alt="Mehul Singh" width="250" height="250" loading="lazy">
+          </div>
+        </div>
+        <h1 class="hero-title">Mehul Singh</h1>
+        <p class="hero-subtitle">Full-Stack Developer & AI/ML Specialist</p>
+        
+        <div class="contact-info" role="list">
+          <div class="contact-item" role="listitem">
+            <a href="https://maps.google.com/?q=Ghantaghar+Clock+Tower,+Birgunj,+Nepal" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               aria-label="Location: Birgunj, Nepal">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <span>Birgunj, Nepal</span>
+            </a>
+          </div>
+          <div class="contact-item" role="listitem">
+            <a href="mailto:mehulsingh1209@gmail.com" aria-label="Email: mehulsingh1209@gmail.com">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <span>mehulsingh1209@gmail.com</span>
+            </a>
+          </div>
+          <div class="contact-item" role="listitem">
+            <a href="tel:+9779840239391" aria-label="Phone: +977 9840239391">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+              <span>+977 9840239391</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="social-links" role="list">
+          <a href="https://github.com/mehulsingh1209" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             aria-label="GitHub Profile"
+             role="listitem">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/mehulsng/" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             aria-label="LinkedIn Profile"
+             role="listitem">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+          <a href="https://leetcode.com/u/mehulsng/" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             aria-label="LeetCode Profile"
+             role="listitem">
+            <i class="fas fa-code" aria-hidden="true"></i>
           </a>
         </div>
-        <div class="contact-item">
-          <a href="mailto:mehulsingh1209@gmail.com" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-            <span>mehulsingh1209@gmail.com</span>
-          </a>
-        </div>
-        <div class="contact-item">
-          <a href="tel:9840239391" aria-label="Phone">
-            <i class="fas fa-phone"></i>
-            <span>+977 9840239391</span>
-          </a>
-        </div>
-      </div>
-      <div class="social-links">
-        <a href="https://github.com/mehulsingh1209" target="_blank" aria-label="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/mehulsng/" target="_blank" aria-label="LinkedIn">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://leetcode.com/u/mehulsng/" target="_blank" aria-label="LeetCode">
-          <i class="fas fa-code"></i>
+
+        <a href="#contact" class="btn cta-btn">
+          <i class="fas fa-paper-plane" aria-hidden="true"></i>
+          <span>Let's Collaborate</span>
         </a>
       </div>
-      <a href="#contact" class="btn">
-        <i class="fas fa-paper-plane"></i> Let's Collaborate
-      </a>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main>
-    <!-- About Section -->
-    <section id="about">
+  <main id="main-content">
+    <section id="about" class="section">
       <div class="container">
-        <h2><i class="fas fa-user"></i> About Me</h2>
+        <h2 class="section-title">
+          <i class="fas fa-user" aria-hidden="true"></i>
+          About Me
+        </h2>
         <div class="about-content">
-          <p>Mern Stack Developer with expertise in building scalable web applications and machine learning solutions. 1+ years of experience in front-end development with React.js and proficiency in Python-based AI/ML implementations. Strong background in cloud platforms and agile development methodologies.</p>
+          <p class="about-text">
+            Mern Stack Developer with expertise in building scalable web applications and machine learning solutions. 
+            1+ years of experience in front-end development with React.js and proficiency in Python-based AI/ML implementations. 
+            Strong background in cloud platforms and agile development methodologies.
+          </p>
           <div class="about-stats">
             <div class="stat-item">
-              <i class="fas fa-code"></i>
+              <i class="fas fa-code" aria-hidden="true"></i>
               <h3>1+</h3>
               <p>Years Experience</p>
             </div>
             <div class="stat-item">
-              <i class="fas fa-project-diagram"></i>
+              <i class="fas fa-project-diagram" aria-hidden="true"></i>
               <h3>10+</h3>
               <p>Projects</p>
             </div>
             <div class="stat-item">
-              <i class="fas fa-graduation-cap"></i>
+              <i class="fas fa-graduation-cap" aria-hidden="true"></i>
               <h3>B.Tech</h3>
               <p>Computer Science</p>
             </div>
@@ -126,144 +160,174 @@
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
+    <section id="skills" class="section">
       <div class="container">
-        <h2><i class="fas fa-code"></i> Technical Skills</h2>
-        
-        <div class="skill-category">
-          <h3><i class="fas fa-laptop-code"></i> Core Skills</h3>
-          <div class="skill-tags">
-            <div class="skill-tag">
-              <i class="fas fa-database"></i>
-              <span>Data Structures</span>
-            </div>
-            <div class="skill-tag">
-              <i class="fas fa-globe"></i>
-              <span>Web Development</span>
-            </div>
-            <div class="skill-tag">
-              <i class="fas fa-mobile-alt"></i>
-              <span>Mobile App Development</span>
-            </div>
-            <div class="skill-tag">
-              <i class="fab fa-android"></i>
-              <span>Android</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <h3><i class="fas fa-paint-brush"></i> Frontend Development</h3>
-          <div class="skill-tags">
-            <div class="skill-tag">
-              <i class="fab fa-react"></i>
-              <span>React</span>
-            </div>
-            <div class="skill-tag">
-              <i class="fab fa-html5"></i>
-              <span>HTML5</span>
-            </div>
-            <div class="skill-tag">
-              <i class="fab fa-css3-alt"></i>
-              <span>CSS3</span>
-            </div>
-            <div class="skill-tag">
-              <i class="fab fa-js"></i>
-              <span>JavaScript</span>
+        <h2 class="section-title">
+          <i class="fas fa-code" aria-hidden="true"></i>
+          Technical Skills
+        </h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>
+              <i class="fas fa-laptop-code" aria-hidden="true"></i>
+              Core Skills
+            </h3>
+            <div class="skill-tags" role="list">
+              <div class="skill-tag" role="listitem">
+                <i class="fas fa-database" aria-hidden="true"></i>
+                <span>Data Structures</span>
+              </div>
+              <div class="skill-tag" role="listitem">
+                <i class="fas fa-globe" aria-hidden="true"></i>
+                <span>Web Development</span>
+              </div>
+              <div class="skill-tag" role="listitem">
+                <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                <span>Mobile App Development</span>
+              </div>
+              <div class="skill-tag" role="listitem">
+                <i class="fab fa-android" aria-hidden="true"></i>
+                <span>Android</span>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="skill-category">
-          <h3><i class="fas fa-server"></i> Backend Development</h3>
-          <div class="skill-tags">
-            <div class="skill-tag">
-              <i class="fab fa-node-js"></i>
-              <span>Node.js</span>
-            </div>
-            <div class="skill-tag">
-              <i class="fas fa-server"></i>
-              <span>Express</span>
-            </div>
-            <div class="skill-tag">
-              <i class="fas fa-database"></i>
-              <span>MongoDB</span>
-            </div>
-            <div class="skill-tag">
-              <i class="fas fa-link"></i>
-              <span>RESTful APIs</span>
+          
+          <div class="skill-category">
+            <h3><i class="fas fa-paint-brush"></i> Frontend Development</h3>
+            <div class="skill-tags">
+              <div class="skill-tag">
+                <i class="fab fa-react"></i>
+                <span>React</span>
+              </div>
+              <div class="skill-tag">
+                <i class="fab fa-html5"></i>
+                <span>HTML5</span>
+              </div>
+              <div class="skill-tag">
+                <i class="fab fa-css3-alt"></i>
+                <span>CSS3</span>
+              </div>
+              <div class="skill-tag">
+                <i class="fab fa-js"></i>
+                <span>JavaScript</span>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="skill-category">
-          <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
-          <div class="skill-tags">
-            <div class="skill-tag">
-              <i class="fab fa-python"></i>
-              <span>Python</span>
+          
+          <div class="skill-category">
+            <h3><i class="fas fa-server"></i> Backend Development</h3>
+            <div class="skill-tags">
+              <div class="skill-tag">
+                <i class="fab fa-node-js"></i>
+                <span>Node.js</span>
+              </div>
+              <div class="skill-tag">
+                <i class="fas fa-server"></i>
+                <span>Express</span>
+              </div>
+              <div class="skill-tag">
+                <i class="fas fa-database"></i>
+                <span>MongoDB</span>
+              </div>
+              <div class="skill-tag">
+                <i class="fas fa-link"></i>
+                <span>RESTful APIs</span>
+              </div>
             </div>
-            <div class="skill-tag">
-              <i class="fas fa-network-wired"></i>
-              <span>CNNs</span>
-            </div>
-            <div class="skill-tag">
-              <i class="fas fa-brain"></i>
-              <span>Deep Learning</span>
+          </div>
+          
+          <div class="skill-category">
+            <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
+            <div class="skill-tags">
+              <div class="skill-tag">
+                <i class="fab fa-python"></i>
+                <span>Python</span>
+              </div>
+              <div class="skill-tag">
+                <i class="fas fa-network-wired"></i>
+                <span>CNNs</span>
+              </div>
+              <div class="skill-tag">
+                <i class="fas fa-brain"></i>
+                <span>Deep Learning</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
+    <section id="projects" class="section">
       <div class="container">
-        <h2><i class="fas fa-project-diagram"></i> Featured Projects</h2>
+        <h2 class="section-title">
+          <i class="fas fa-project-diagram" aria-hidden="true"></i>
+          Featured Projects
+        </h2>
         <div class="projects-grid">
-          <!-- Add your projects here -->
+          <!-- Project cards will be added here -->
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" class="section">
       <div class="container">
-        <h2><i class="fas fa-envelope"></i> Get in Touch</h2>
+        <h2 class="section-title">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          Get in Touch
+        </h2>
         <div class="contact-wrapper">
           <div class="contact-info">
             <div class="contact-card">
-              <i class="fas fa-envelope"></i>
+              <i class="fas fa-envelope" aria-hidden="true"></i>
               <h3>Email</h3>
-              <p>mehulsingh1209@gmail.com</p>
+              <p>
+                <a href="mailto:mehulsingh1209@gmail.com">mehulsingh1209@gmail.com</a>
+              </p>
             </div>
             <div class="contact-card">
-              <i class="fas fa-phone"></i>
+              <i class="fas fa-phone" aria-hidden="true"></i>
               <h3>Phone</h3>
-              <p>+977 9840239391</p>
+              <p>
+                <a href="tel:+9779840239391">+977 9840239391</a>
+              </p>
             </div>
             <div class="contact-card">
-              <i class="fas fa-map-marker-alt"></i>
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
               <h3>Location</h3>
               <p>Birgunj, Nepal</p>
             </div>
           </div>
-          <form id="contact-form">
+          <form id="contact-form" class="contact-form" novalidate>
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" id="name" name="name" required>
+              <input type="text" 
+                     id="name" 
+                     name="name" 
+                     required 
+                     aria-required="true"
+                     placeholder="Your name">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" required>
+              <input type="email" 
+                     id="email" 
+                     name="email" 
+                     required 
+                     aria-required="true"
+                     placeholder="Your email">
             </div>
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
+              <textarea id="message" 
+                        name="message" 
+                        rows="5" 
+                        required 
+                        aria-required="true"
+                        placeholder="Your message"></textarea>
             </div>
-            <button type="submit" class="btn">
-              <i class="fas fa-paper-plane"></i> Send Message
+            <button type="submit" class="btn submit-btn">
+              <i class="fas fa-paper-plane" aria-hidden="true"></i>
+              <span>Send Message</span>
             </button>
           </form>
         </div>
@@ -271,32 +335,50 @@
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
+  <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-content">
         <div class="footer-info">
           <h3>MSR</h3>
           <p>Building digital experiences with code and creativity</p>
         </div>
-        <div class="social-links">
-          <a href="https://github.com/mehulsingh1209" target="_blank" aria-label="GitHub">
-            <i class="fab fa-github"></i>
+        <div class="social-links" role="list">
+          <a href="https://github.com/mehulsingh1209" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             aria-label="GitHub Profile"
+             role="listitem">
+            <i class="fab fa-github" aria-hidden="true"></i>
           </a>
-          <a href="https://www.linkedin.com/in/mehulsng/" target="_blank" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
+          <a href="https://www.linkedin.com/in/mehulsng/" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             aria-label="LinkedIn Profile"
+             role="listitem">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
           </a>
-          <a href="https://leetcode.com/u/mehulsng/" target="_blank" aria-label="LeetCode">
-            <i class="fas fa-code"></i>
+          <a href="https://leetcode.com/u/mehulsng/" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             aria-label="LeetCode Profile"
+             role="listitem">
+            <i class="fas fa-code" aria-hidden="true"></i>
           </a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 MSR. All rights reserved.</p>
+        <p>&copy; <span id="current-year">2024</span> Mehul Singh. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="script.js" defer></script>
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
