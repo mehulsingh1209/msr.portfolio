@@ -367,4 +367,119 @@ document.addEventListener('DOMContentLoaded', function() {
   `;
   
   document.head.appendChild(style);
+
+  // Scroll-triggered animations
+  const animateElements = document.querySelectorAll('.animate-on-scroll');
+  
+  const observerOptions = {
+    root: null,
+    threshold: 0.1,
+    rootMargin: '0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Stop observing once animated
+      }
+    });
+  }, observerOptions);
+  
+  animateElements.forEach(element => {
+    observer.observe(element);
+  });
+
+  // Active section highlighting
+  const sections = document.querySelectorAll('section');
+  
+  function highlightActiveSection() {
+    const scrollPosition = window.scrollY;
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - navbar.offsetHeight - 100;
+      const sectionBottom = sectionTop + section.offsetHeight;
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        const correspondingLink = document.querySelector(`a[href="#${section.id}"]`);
+        if (correspondingLink) {
+          document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+          correspondingLink.classList.add('active');
+        }
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', highlightActiveSection);
+
+  // Parallax effect for header
+  const header = document.querySelector('header');
+  const profileImg = document.querySelector('.profile-img');
+  
+  window.addEventListener('scroll', () => {
+    if (window.innerWidth > 768) { // Only apply on desktop
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * 0.5;
+      
+      profileImg.style.transform = `translateY(${rate}px)`;
+      header.style.backgroundPosition = `50% ${rate}px`;
+    }
+  });
+
+  // Animate skill tags on hover
+  const skillTags = document.querySelectorAll('.skill-tag');
+  
+  skillTags.forEach(tag => {
+    tag.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-5px) scale(1.05)';
+    });
+    
+    tag.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+    });
+  });
+
+  // Form submission animation
+  const contactForm = document.getElementById('contact-form');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      submitBtn.disabled = true;
+      
+      // Simulate form submission (replace with actual form submission)
+      setTimeout(() => {
+        submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+        submitBtn.style.backgroundColor = 'var(--success)';
+        
+        // Reset form
+        setTimeout(() => {
+          this.reset();
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+          submitBtn.style.backgroundColor = '';
+        }, 2000);
+      }, 1500);
+    });
+  }
+
+  // Initialize animations on page load
+  function initializeAnimations() {
+    document.body.classList.add('loaded');
+    
+    // Add animation classes to elements
+    const elements = document.querySelectorAll('.skill-category, .stat-item, .project-card, .contact-card');
+    elements.forEach((element, index) => {
+      element.style.animationDelay = `${index * 0.2}s`;
+      element.classList.add('animate-on-scroll');
+    });
+  }
+  
+  // Call initialization after a short delay to ensure smooth animation start
+  setTimeout(initializeAnimations, 100);
 });
