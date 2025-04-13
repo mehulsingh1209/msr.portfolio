@@ -3,7 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
   // Mobile menu toggle functionality
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
+  const navbar = document.querySelector('.navbar');
+  let lastScrollTop = 0;
   
+  // Function to close mobile menu
+  function closeMobileMenu() {
+    navLinks.classList.remove('active');
+    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+  }
+  
+  // Toggle mobile menu
   if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', function() {
       navLinks.classList.toggle('active');
@@ -12,6 +22,42 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!navbar.contains(e.target) && navLinks.classList.contains('active')) {
+      closeMobileMenu();
+    }
+  });
+  
+  // Hide navbar on scroll down, show on scroll up
+  window.addEventListener('scroll', function() {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > lastScrollTop && currentScroll > 100) {
+      // Scrolling down
+      navbar.style.transform = 'translateY(-100%)';
+      if (navLinks.classList.contains('active')) {
+        closeMobileMenu();
+      }
+    } else {
+      // Scrolling up
+      navbar.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = currentScroll;
+  });
+  
+  // Handle window resize
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+        closeMobileMenu();
+      }
+    }, 250);
+  });
+  
   // Smooth scrolling for all anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -19,23 +65,24 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Close mobile menu if open
       if (navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+        closeMobileMenu();
       }
       
       // Get the target element
       const targetId = this.getAttribute('href');
-      if (targetId === '#') return; // Skip if href is just "#"
+      if (targetId === '#') return;
       
       const targetElement = document.querySelector(targetId);
-      if (!targetElement) return; // Skip if target doesn't exist
+      if (!targetElement) return;
       
-      // Calculate scroll position with offset for navbar
-      const navbarHeight = document.querySelector('.navbar').offsetHeight;
+      // Calculate scroll position with dynamic offset for navbar
+      const navbarHeight = navbar.offsetHeight;
       const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
       
-      // Smooth scroll to target
+      // Smooth scroll to target with dynamic duration based on distance
+      const distance = Math.abs(window.pageYOffset - targetPosition);
+      const duration = Math.min(1000, Math.max(500, distance / 2));
+      
       window.scrollTo({
         top: targetPosition,
         behavior: 'smooth'
@@ -283,6 +330,39 @@ document.addEventListener('DOMContentLoaded', function() {
       width: 100%;
       height: 2px;
       background-color: #2563eb;
+    }
+    
+    /* Navbar transitions */
+    .navbar {
+      transition: transform 0.3s ease;
+    }
+    
+    /* Mobile menu transitions */
+    .nav-links {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        transform: translateY(-150%);
+        opacity: 0;
+      }
+      
+      .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    /* Touch feedback */
+    @media (hover: none) {
+      .nav-links a:active,
+      .btn:active,
+      .skill-tag:active,
+      .social-links a:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+      }
     }
   `;
   
