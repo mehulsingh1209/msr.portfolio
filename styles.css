@@ -12,6 +12,23 @@
   --danger: #ef4444;
   --border-radius: 8px;
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  /* Responsive Spacing Variables */
+  --spacing-xs: clamp(0.5rem, 0.5vw, 0.75rem);
+  --spacing-sm: clamp(1rem, 1vw, 1.5rem);
+  --spacing-md: clamp(1.5rem, 2vw, 2rem);
+  --spacing-lg: clamp(2rem, 3vw, 3rem);
+  --spacing-xl: clamp(3rem, 4vw, 4rem);
+  
+  /* Fluid Typography */
+  --font-size-base: clamp(1rem, 1vw, 1.125rem);
+  --font-size-lg: clamp(1.125rem, 1.25vw, 1.25rem);
+  --font-size-xl: clamp(1.25rem, 1.5vw, 1.5rem);
+  --font-size-2xl: clamp(1.5rem, 2vw, 2rem);
+  --font-size-3xl: clamp(2rem, 2.5vw, 2.5rem);
+  
+  /* Container Width */
+  --container-width: min(90%, 1200px);
 }
 
 /* Reset & Global Styles */
@@ -23,7 +40,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 
 body {
@@ -65,10 +82,9 @@ body::after {
 
 /* Containers */
 .container {
-  width: 90%;
-  max-width: 1200px;
+  width: var(--container-width);
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 var(--spacing-sm);
 }
 
 /* Typography */
@@ -83,7 +99,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-md);
 }
 
 /* Removed vertical bar after headings */
@@ -92,12 +109,9 @@ h1::after, h3::after {
 }
 
 h2 {
-  font-size: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  padding-bottom: 0.5rem;
-  padding-left: 28px; /* Space for the icon */
+  font-size: var(--font-size-2xl);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
 }
 
 /* Replace terminal-like prefix with an attractive icon */
@@ -125,12 +139,13 @@ h2::after {
 }
 
 h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-sm);
 }
 
 p {
-  margin-bottom: 1.5rem;
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-md);
   font-family: 'Courier New', monospace;
   letter-spacing: -0.5px;
 }
@@ -645,100 +660,72 @@ footer .social-links a:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Responsive Design */
+/* Enhanced Responsive Styles */
 @media (max-width: 991px) {
-  html {
-    font-size: 15px;
+  :root {
+    --container-width: 95%;
   }
   
-  .container {
-    width: 95%;
+  .nav-links {
+    gap: var(--spacing-sm);
+  }
+  
+  .skill-tags {
+    gap: var(--spacing-xs);
   }
 }
 
 @media (max-width: 768px) {
-  html {
-    font-size: 14px;
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--background);
+    padding: var(--spacing-md);
+    flex-direction: column;
+    transform: translateY(-150%);
+    transition: transform 0.3s ease;
+    box-shadow: var(--box-shadow);
+    z-index: 1000;
   }
   
-  h1 {
-    font-size: 2.2rem;
-  }
-  
-  h2 {
-    font-size: 1.8rem;
+  .nav-links.active {
+    transform: translateY(0);
   }
   
   .mobile-menu-btn {
     display: block;
   }
   
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
+  header .container {
     flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
-    background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transform: scaleY(0);
-    transform-origin: top;
-    opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 10;
-  }
-  
-  .nav-links li {
-    margin: 0.5rem 0;
-    width: 100%;
     text-align: center;
+    gap: var(--spacing-md);
   }
   
-  .nav-links a {
-    display: block;
-    padding: 0.75rem 1rem;
+  .profile-img {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
   }
   
-  header {
-    padding: 4rem 0 3rem;
+  .skill-category {
+    margin-bottom: var(--spacing-lg);
   }
   
-  .position {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .date {
-    margin-top: 0.25rem;
-  }
-  
-  .interest-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
-  
-  footer .container {
-    flex-direction: column;
-  }
-  
-  footer .social-links {
-    margin-top: 1rem;
+  .contact-info {
+    justify-content: center;
+    gap: var(--spacing-md);
   }
 }
 
 @media (max-width: 576px) {
-  .container {
-    width: 92%;
-    padding: 0 0.5rem;
-  }
-  
-  section {
-    padding: 2rem 1rem;
-  }
-  
-  header {
-    padding: 3rem 0 2rem;
+  :root {
+    --container-width: 100%;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1.25rem;
+    --spacing-lg: 1.75rem;
   }
   
   .profile-img {
@@ -746,32 +733,79 @@ footer .social-links a:hover {
     height: 150px;
   }
   
-  h1 {
-    font-size: 2rem;
-  }
-  
-  h2 {
-    font-size: 1.6rem;
-  }
-  
   .skill-tags {
-    gap: 0.5rem;
+    flex-direction: column;
+    align-items: stretch;
   }
   
   .skill-tag {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
-  }
-  
-  .contact-info {
-    flex-wrap: wrap;
-  }
-  
-  .contact-item {
-    margin: 0.5rem;
-  }
-  
-  #contact-form button {
     width: 100%;
+    text-align: center;
   }
+  
+  .internship-item, .education-item {
+    padding: var(--spacing-sm);
+  }
+  
+  .position {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .date {
+    margin-left: 0;
+  }
+  
+  #contact-form {
+    padding: var(--spacing-sm);
+  }
+}
+
+/* Touch-friendly Interactions */
+@media (hover: none) {
+  .nav-links a,
+  .btn,
+  .skill-tag,
+  .social-links a {
+    padding: var(--spacing-sm);
+  }
+  
+  .contact-item a {
+    padding: var(--spacing-sm);
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Improved Image Responsiveness */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Enhanced Form Responsiveness */
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  border: 1px solid var(--text-light);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-base);
+}
+
+#contact-form button {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-base);
 }
