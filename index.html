@@ -2,443 +2,344 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Mehul Singh - Full-Stack Developer & AI/ML Specialist. Portfolio showcasing skills, projects, and experience in web development and machine learning.">
   <meta name="keywords" content="Mehul Singh, Full-Stack Developer, AI/ML Specialist, Web Development, Machine Learning, React, Node.js, Python">
-  <meta name="author" content="Mehul Singh">
+  <meta name="author" content="Mehul">
   <meta name="theme-color" content="#2563eb">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  
-  <title>Mehul Singh - Full-Stack Developer & AI/ML Specialist</title>
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  
-  <!-- Preload Critical Resources -->
-  <link rel="preload" href="2025.jpg" as="image">
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
-  
-  <!-- Stylesheets -->
+  <title>MSR</title>
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Square logo styling */
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      background-color: #2563eb;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 4px; /* Slightly rounded corners for a modern look */
+      transition: background-color 0.3s ease;
+    }
+    
+    .logo:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
 </head>
 <body>
-  <!-- Skip to Main Content Link for Accessibility -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
   <!-- Navigation -->
-  <nav class="navbar" role="navigation" aria-label="Main navigation">
+  <nav class="navbar">
     <div class="container">
-      <a href="#" class="logo" aria-label="MSR Logo">MSR</a>
-      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
-        <i class="fa fa-bars" aria-hidden="true"></i>
+      <a href="#" class="logo">MSR</a>
+      <button class="mobile-menu-btn">
+        <i class="fa fa-bars"></i>
       </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#home" aria-current="page"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
-        <li><a href="#about"><i class="fas fa-user" aria-hidden="true"></i> About</a></li>
-        <li><a href="#skills"><i class="fas fa-code" aria-hidden="true"></i> Skills</a></li>
-        <li><a href="#projects"><i class="fas fa-project-diagram" aria-hidden="true"></i> Projects</a></li>
-        <li><a href="#contact"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a></li>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Header/Hero Section -->
-  <header id="home" class="hero">
+<header>
     <div class="container">
-      <div class="hero-content">
-        <div class="profile-img">
-          <img src="2025.jpg" alt="Mehul Singh" width="250" height="250" loading="lazy">
-        </div>
-        <h1 class="hero-title">Mehul Singh</h1>
-        <p class="hero-subtitle">Full-Stack Developer & AI/ML Specialist</p>
-        
-        <div class="contact-info" role="list">
-          <div class="contact-item" role="listitem">
-            <a href="https://maps.google.com/?q=Ghantaghar+Clock+Tower,+Birgunj,+Nepal" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               aria-label="Location: Birgunj, Nepal">
-              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-              <span>Birgunj, Nepal</span>
-            </a>
-          </div>
-          <div class="contact-item" role="listitem">
-            <a href="mailto:mehulsingh1209@gmail.com" aria-label="Email: mehulsingh1209@gmail.com">
-              <i class="fas fa-envelope" aria-hidden="true"></i>
-              <span>mehulsingh1209@gmail.com</span>
-            </a>
-          </div>
-          <div class="contact-item" role="listitem">
-            <a href="tel:+9779840239391" aria-label="Phone: +977 9840239391">
-              <i class="fas fa-phone" aria-hidden="true"></i>
-              <span>+977 9840239391</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="social-links" role="list">
-          <a href="https://github.com/mehulsingh1209" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             aria-label="GitHub Profile"
-             role="listitem">
-            <i class="fab fa-github" aria-hidden="true"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/mehulsng/" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             aria-label="LinkedIn Profile"
-             role="listitem">
-            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-          </a>
-          <a href="https://leetcode.com/u/mehulsng/" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             aria-label="LeetCode Profile"
-             role="listitem">
-            <i class="fas fa-code" aria-hidden="true"></i>
-          </a>
-        </div>
-
-        <a href="#contact" class="btn primary-btn">
-          <i class="fas fa-paper-plane" aria-hidden="true"></i>
-          <span>Let's Collaborate</span>
-        </a>
+      <div class="profile-img">
+        <img src="2025.jpg" alt="Mehul Singh" loading="lazy">
       </div>
+      <h1>Mehul Singh</h1>
+      <p>Web / App & AI Developer</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <a href="https://maps.google.com/?q=Ghantaghar+Clock+Tower,+Birgunj,+Nepal" target="_blank">
+            <i class="fas fa-map-marker-alt"></i>
+          </a>
+        </div>
+        <div class="contact-item">
+          <a href="mailto:mehulsingh1209@gmail.com">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+        <div class="contact-item">
+          <a href="tel:9840239391">
+            <i class="fas fa-phone"></i>
+          </a>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="https://github.com/mehulsingh1209" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/mehulsng/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://leetcode.com/u/mehulsng/" target="_blank" aria-label="LeetCode"><i class="fas fa-code"></i></a>
+      </div>
+      <a href="#contact" class="btn">
+        <i class="fas fa-paper-plane"></i> Collaborate
+      </a>
     </div>
   </header>
-
   <!-- Main Content -->
-  <main id="main-content">
+  <main class="container">
     <!-- About Section -->
-    <section id="about" class="section">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-          <div class="about-text">
-            <p>
-              Mern Stack Developer with expertise in building scalable web applications and machine learning solutions. 
-              1+ years of experience in front-end development with React.js and proficiency in Python-based AI/ML implementations. 
-              Strong background in cloud platforms and agile development methodologies.
-            </p>
-            <p>
-              Passionate about creating innovative solutions that combine the power of web technologies with artificial intelligence. 
-              Committed to writing clean, maintainable code and following best practices in software development.
-            </p>
-          </div>
-          <div class="about-stats">
-            <div class="stat-item">
-              <i class="fas fa-code" aria-hidden="true"></i>
-              <h3>1+</h3>
-              <p>Years Experience</p>
-            </div>
-            <div class="stat-item">
-              <i class="fas fa-project-diagram" aria-hidden="true"></i>
-              <h3>10+</h3>
-              <p>Projects</p>
-            </div>
-            <div class="stat-item">
-              <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-              <h3>B.Tech</h3>
-              <p>Computer Science</p>
-            </div>
-          </div>
+    <section id="about">
+      <h2><i class="fas fa-user"></i> About Me</h2>
+      <p>Mern Stack Developer with expertise in building scalable web applications and machine learning solutions. 1+ years of experience in front-end development with React.js and proficiency in Python-based AI/ML implementations. Strong background in cloud platforms and agile development methodologies.</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2><i class="fas fa-code"></i> Technical Skills</h2>
+      
+      <div class="skill-category">
+        <h3>Core Skills</h3>
+        <div class="skill-tags">
+          <div class="skill-tag"><i class="fas fa-database"></i> Data Structures</div>
+          <div class="skill-tag"><i class="fas fa-globe"></i> Web Development</div>
+          <div class="skill-tag"><i class="fas fa-mobile-alt"></i> Mobile App Development</div>
+          <div class="skill-tag"><i class="fab fa-android"></i> Android</div>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3>Frontend Development</h3>
+        <div class="skill-tags">
+          <div class="skill-tag"><i class="fab fa-react"></i> React</div>
+          <div class="skill-tag"><i class="fab fa-html5"></i> HTML</div>
+          <div class="skill-tag"><i class="fab fa-css3-alt"></i> CSS</div>
+          <div class="skill-tag"><i class="fab fa-js"></i> JavaScript</div>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3>Backend Development</h3>
+        <div class="skill-tags">
+          <div class="skill-tag"><i class="fab fa-node-js"></i> Node.js</div>
+          <div class="skill-tag"><i class="fas fa-server"></i> Express</div>
+          <div class="skill-tag"><i class="fas fa-database"></i> MongoDB</div>
+          <div class="skill-tag"><i class="fas fa-link"></i> RESTful APIs</div>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3>AI & Machine Learning</h3>
+        <div class="skill-tags">
+          <div class="skill-tag"><i class="fab fa-python"></i> Python</div>
+          <div class="skill-tag"><i class="fas fa-network-wired"></i> CNNs</div>
+          <div class="skill-tag"><i class="fas fa-brain"></i> Deep Learning</div>
         </div>
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-      <div class="container">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <h3>Core Skills</h3>
-            <div class="skill-tags" role="list">
-              <div class="skill-tag" role="listitem">
-                <i class="fas fa-database" aria-hidden="true"></i>
-                <span>Data Structures</span>
-              </div>
-              <div class="skill-tag" role="listitem">
-                <i class="fas fa-globe" aria-hidden="true"></i>
-                <span>Web Development</span>
-              </div>
-              <div class="skill-tag" role="listitem">
-                <i class="fas fa-mobile-alt" aria-hidden="true"></i>
-                <span>Mobile App Development</span>
-              </div>
-              <div class="skill-tag" role="listitem">
-                <i class="fab fa-android" aria-hidden="true"></i>
-                <span>Android</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="skill-category">
-            <h3>Frontend Development</h3>
-            <div class="skill-tags" role="list">
-              <div class="skill-tag" role="listitem">
-                <i class="fab fa-react" aria-hidden="true"></i>
-                <span>React</span>
-              </div>
-              <div class="skill-tag" role="listitem">
-                <i class="fab fa-html5" aria-hidden="true"></i>
-                <span>HTML5</span>
-              </div>
-              <div class="skill-tag" role="listitem">
-                <i class="fab fa-css3-alt" aria-hidden="true"></i>
-                <span>CSS3</span>
-              </div>
-              <div class="skill-tag" role="listitem">
-                <i class="fab fa-js" aria-hidden="true"></i>
-                <span>JavaScript</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="skill-category">
-            <h3>Backend Development</h3>
-            <div class="skill-tags" role="list">
-              <div class="skill-tag" role="listitem">
-                <i class="fab fa-node-js" aria-hidden="true"></i>
-                <span>Node.js</span>
-              </div>
-              <div class="skill-tag" role="listitem">
-                <i class="fas fa-server" aria-hidden="true"></i>
-                <span>Express</span>
-              </div>
-              <div class="skill-tag" role="listitem">
-                <i class="fas fa-database" aria-hidden="true"></i>
-                <span>MongoDB</span>
-              </div>
-              <div class="skill-tag" role="listitem">
-                <i class="fas fa-link" aria-hidden="true"></i>
-                <span>RESTful APIs</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="skill-category">
-            <h3>AI & Machine Learning</h3>
-            <div class="skill-tags" role="list">
-              <div class="skill-tag" role="listitem">
-                <i class="fab fa-python" aria-hidden="true"></i>
-                <span>Python</span>
-              </div>
-              <div class="skill-tag" role="listitem">
-                <i class="fas fa-brain" aria-hidden="true"></i>
-                <span>Machine Learning</span>
-              </div>
-              <div class="skill-tag" role="listitem">
-                <i class="fas fa-network-wired" aria-hidden="true"></i>
-                <span>Deep Learning</span>
-              </div>
-              <div class="skill-tag" role="listitem">
-                <i class="fas fa-chart-line" aria-hidden="true"></i>
-                <span>Data Analysis</span>
-              </div>
-            </div>
-          </div>
+    <!-- Internships Section -->
+    <section id="internships">
+      <h2><i class="fas fa-briefcase"></i> Internships</h2>
+      
+      <div class="internship-item">
+        <div class="position">
+          <span>Machine Learning Intern</span>
+          <span class="date"><i class="far fa-calendar-alt"></i> March 2025</span>
         </div>
+        <div class="company"><i class="fas fa-building"></i> Codsoft IT Company, Kolkata, India</div>
+        <ul>
+          <li>Implemented machine learning algorithms to solve real-world business problems</li>
+          <li>Collaborated with a team to develop predictive models using Python and various ML libraries</li>
+          <li>Participated in data preprocessing, feature engineering, and model evaluation</li>
+        </ul>
+      </div>
+      
+      <div class="internship-item">
+        <div class="position">
+          <span>Data Analyst Intern</span>
+          <span class="date"><i class="far fa-calendar-alt"></i> Nov 2024 - Feb 2025</span>
+        </div>
+        <div class="company"><i class="fas fa-building"></i> Shree Rang Pal Private Limited, Birgunj, Nepal</div>
+        <ul>
+          <li>Optimized Tableau data visualization dashboards, increasing stakeholder decision-making effectiveness by 25%</li>
+          <li>Created predictive models using Python and SQL, increasing forecast accuracy by 20%</li>
+          <li>Built automated data pipelines with Python and SQL, reducing manual data processing time by 30%</li>
+        </ul>
+      </div>
+      
+      <div class="internship-item">
+        <div class="position">
+          <span>Frontend Developer Intern</span>
+          <span class="date"><i class="far fa-calendar-alt"></i> May 2024 - June 2024</span>
+        </div>
+        <div class="company"><i class="fas fa-building"></i> Ajay Infotech, Panipat, India</div>
+        <ul>
+          <li>Created a landing page using HTML, CSS, and JavaScript that increased user engagement by 25% thanks to its responsive and engaging design</li>
+          <li>Deployed the project using GitHub Pages/Vercel, providing a clear and easy-to-use interface for users</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+      
+      <div class="education-item">
+        <div class="position">
+          <span>B.Tech Computer Science</span>
+          <span class="date"><i class="far fa-calendar-alt"></i> 2021 - 2025</span>
+        </div>
+        <div class="company"><i class="fas fa-university"></i> Parul University, Vadodara, Gujarat, India</div>
+        <ul>
+          <li>GPA: 7.67/10</li>
+        </ul>
+      </div>
+      
+      <div class="education-item">
+        <div class="position">
+          <span>Secondary Education</span>
+          <span class="date"><i class="far fa-calendar-alt"></i> 2018 - 2020</span>
+        </div>
+        <div class="company"><i class="fas fa-university"></i> Kathmandu Bernhardt College, Kathmandu, Nepal</div>
+        <ul>
+          <li>GPA: 6.8/10 | Scored 68% upon graduation</li>
+        </ul>
+      </div>
+      
+      <div class="education-item">
+        <div class="position">
+          <span>Primary Education</span>
+          <span class="date"><i class="far fa-calendar-alt"></i> 2008 - 2016</span>
+        </div>
+        <div class="company"><i class="fas fa-university"></i> Kadambari Academy, Birgunj, Nepal</div>
+        <ul>
+          <li>Scored 80% upon graduation</li>
+        </ul>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section">
-      <div class="container">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <article class="project-card">
-            <div class="project-image">
-              <img src="project1.jpg" alt="AI Task Manager" loading="lazy">
-            </div>
-            <div class="project-content">
-              <h3>AI Task Manager</h3>
-              <p>An intelligent task management application powered by machine learning algorithms for smart task prioritization and scheduling.</p>
-              <div class="project-tags">
-                <span class="project-tag">React</span>
-                <span class="project-tag">Node.js</span>
-                <span class="project-tag">Python</span>
-                <span class="project-tag">TensorFlow</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="btn secondary-btn" target="_blank" rel="noopener noreferrer">
-                  <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                  <span>Live Demo</span>
-                </a>
-                <a href="#" class="btn outline-btn" target="_blank" rel="noopener noreferrer">
-                  <i class="fab fa-github" aria-hidden="true"></i>
-                  <span>Source Code</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 2 -->
-          <article class="project-card">
-            <div class="project-image">
-              <img src="project2.jpg" alt="E-Commerce Platform" loading="lazy">
-            </div>
-            <div class="project-content">
-              <h3>E-Commerce Platform</h3>
-              <p>A full-featured e-commerce platform with real-time inventory management and personalized recommendations.</p>
-              <div class="project-tags">
-                <span class="project-tag">React</span>
-                <span class="project-tag">Redux</span>
-                <span class="project-tag">Node.js</span>
-                <span class="project-tag">MongoDB</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="btn secondary-btn" target="_blank" rel="noopener noreferrer">
-                  <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                  <span>Live Demo</span>
-                </a>
-                <a href="#" class="btn outline-btn" target="_blank" rel="noopener noreferrer">
-                  <i class="fab fa-github" aria-hidden="true"></i>
-                  <span>Source Code</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 3 -->
-          <article class="project-card">
-            <div class="project-image">
-              <img src="project3.jpg" alt="Image Recognition Service" loading="lazy">
-            </div>
-            <div class="project-content">
-              <h3>Image Recognition Service</h3>
-              <p>A deep learning-based image recognition service that can identify and classify objects in real-time.</p>
-              <div class="project-tags">
-                <span class="project-tag">Python</span>
-                <span class="project-tag">TensorFlow</span>
-                <span class="project-tag">Flask</span>
-                <span class="project-tag">React</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="btn secondary-btn" target="_blank" rel="noopener noreferrer">
-                  <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                  <span>Live Demo</span>
-                </a>
-                <a href="#" class="btn outline-btn" target="_blank" rel="noopener noreferrer">
-                  <i class="fab fa-github" aria-hidden="true"></i>
-                  <span>Source Code</span>
-                </a>
-              </div>
-            </div>
-          </article>
+    <section id="projects">
+      <h2><i class="fas fa-tasks"></i> Key Projects</h2>
+      
+      <div class="project-item">
+        <div class="position">
+          <span>Grocery Delivery Service</span>
         </div>
+        <div class="company"><i class="fas fa-code"></i> React, Express.js, MongoDB</div>
+        <p>Developed a comprehensive web application for grocery delivery with responsive UI and efficient backend processing.</p>
+        <ul>
+          <li>Used React to create an intuitive and responsive user interface that increased user engagement and session duration by 25%</li>
+          <li>Designed and implemented RESTful APIs using Express.js and MongoDB that ensured effective data processing and a 35% reduction in response time</li>
+          <li>Optimized database queries reducing order processing time by 50%, improving scalability for heavy traffic</li>
+        </ul>
+        <a href="https://grocery-delivery-service.vercel.app/#" class="btn" target="_blank"><i class="fas fa-external-link-alt"></i> View Project</a>
+      </div>
+      
+      <div class="project-item">
+        <div class="position">
+          <span>Location Based Learning and Plants Disease Detection</span>
+        </div>
+        <div class="company"><i class="fas fa-code"></i> Python, CNN, TensorFlow, Google Maps API</div>
+        <p>Educational platform combining plant disease detection with location-based learning features.</p>
+        <ul>
+          <li>Used CNNs (Convolutional Neural Networks) to design and train a deep learning model that detected plant diseases with 92% accuracy</li>
+          <li>Implemented a real-time tracking feature using Google Maps API, improving accessibility for learners in remote areas</li>
+        </ul>
+        <a href="#" class="btn"><i class="fas fa-external-link-alt"></i> View Project</a>
+      </div>
+      
+      <div class="project-item">
+        <div class="position">
+          <span>Personal Portfolio Website</span>
+        </div>
+        <div class="company"><i class="fas fa-code"></i> HTML5, CSS3, JavaScript, Font Awesome</div>
+        <p>Designed and developed a responsive personal portfolio website to showcase skills and projects.</p>
+        <ul>
+          <li>Created a modern UI with custom CSS animations and transitions for an engaging user experience</li>
+          <li>Implemented responsive design principles ensuring optimal viewing on all device sizes</li>
+          <li>Utilized semantic HTML and accessibility best practices for improved SEO and user accessibility</li>
+          <li>Integrated contact form functionality for potential clients or employers to reach out</li>
+        </ul>
+        <a href="https://msr-portfolio.vercel.app/" class="btn" target="_blank"><i class="fas fa-external-link-alt"></i> View Project</a>
+      </div>
+    </section>
+
+    <!-- Interests Section -->
+    <section id="interests">
+      <h2><i class="fas fa-heart"></i> Interests</h2>
+      <div class="interest-grid">
+        <div class="interest-item">
+          <i class="fas fa-book-open interest-icon"></i>
+          <span>Deep Diving into History</span>
+        </div>
+        <div class="interest-item">
+          <i class="fas fa-rocket interest-icon"></i>
+          <span>Space</span>
+        </div>
+        <div class="interest-item">
+          <i class="fas fa-lightbulb interest-icon"></i>
+          <span>Business Ideas</span>
+        </div>
+        <div class="interest-item">
+          <i class="fas fa-bicycle interest-icon"></i>
+          <span>Bike Riding</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages">
+      <h2><i class="fas fa-language"></i> Languages</h2>
+      <div class="skill-tags">
+        <div class="skill-tag"><i class="fas fa-check"></i> Maithili (Native)</div>
+        <div class="skill-tag"><i class="fas fa-check"></i> Hindi (Fluent)</div>
+        <div class="skill-tag"><i class="fas fa-check"></i> Nepali (Proficient)</div>
+        <div class="skill-tag"><i class="fas fa-check"></i> English (Proficient)</div>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
-      <div class="container">
-        <h2 class="section-title">Get in Touch</h2>
-        <div class="contact-wrapper">
-          <div class="contact-info">
-            <div class="contact-card">
-              <i class="fas fa-envelope" aria-hidden="true"></i>
-              <h3>Email</h3>
-              <p>mehulsingh1209@gmail.com</p>
-              <a href="mailto:mehulsingh1209@gmail.com" class="btn outline-btn">Send Email</a>
-            </div>
-            <div class="contact-card">
-              <i class="fas fa-phone" aria-hidden="true"></i>
-              <h3>Phone</h3>
-              <p>+977 9840239391</p>
-              <a href="tel:+9779840239391" class="btn outline-btn">Call Now</a>
-            </div>
-            <div class="contact-card">
-              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-              <h3>Location</h3>
-              <p>Birgunj, Nepal</p>
-              <a href="https://maps.google.com/?q=Ghantaghar+Clock+Tower,+Birgunj,+Nepal" 
-                 target="_blank" 
-                 rel="noopener noreferrer" 
-                 class="btn outline-btn">View on Map</a>
-            </div>
-          </div>
-
-          <div class="contact-form">
-            <form id="contact-form" name="contact" method="POST" data-netlify="true">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-              <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-              </div>
-              <button type="submit" class="btn primary-btn">
-                <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                <span>Send Message</span>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+    <section id="contact">
+      <h2><i class="fas fa-envelope"></i> Get in Touch</h2>
+      <form id="contact-form" action="https://formsubmit.co/mehulsingh1209@gmail.com" method="POST">
+        <!-- Hidden fields for FormSubmit configuration -->
+        <input type="hidden" name="_next" value="https://msr-portfolio.vercel.app/">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
+        
+        <!-- Form fields -->
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        
+        <button type="submit" class="btn">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </form>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer>
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-info">
-          <h3>Mehul Singh</h3>
-          <p>Full-Stack Developer & AI/ML Specialist</p>
-        </div>
-        <div class="social-links" role="list">
-          <a href="https://github.com/mehulsingh1209" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             aria-label="GitHub Profile"
-             role="listitem">
-            <i class="fab fa-github" aria-hidden="true"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/mehulsng/" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             aria-label="LinkedIn Profile"
-             role="listitem">
-            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-          </a>
-          <a href="https://leetcode.com/u/mehulsng/" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             aria-label="LeetCode Profile"
-             role="listitem">
-            <i class="fas fa-code" aria-hidden="true"></i>
-          </a>
-        </div>
+      <div class="footer-text">
+        <i class="far fa-copyright"></i> 2025 Mehul Singh. All Rights Reserved.
       </div>
-      <div class="footer-bottom">
-        <p>&copy; <span id="current-year">2024</span> Mehul Singh. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://github.com/mehulsingh1209" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/mehulsng/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://leetcode.com/u/mehulsng/" target="_blank" aria-label="LeetCode"><i class="fas fa-code"></i></a>
       </div>
     </div>
   </footer>
 
-  <!-- Back to Top Button -->
-  <button class="back-to-top" aria-label="Back to top">
-    <i class="fas fa-arrow-up" aria-hidden="true"></i>
-  </button>
+  <!-- Scroll to Top Button -->
+  <div class="scroll-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
 
-  <!-- Scripts -->
-  <script src="script.js" defer></script>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
